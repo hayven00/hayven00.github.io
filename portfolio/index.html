@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hi 👋🏾, it's me Kevin | Kev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+
+      .page-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      body {
+        background-color: rgb(229, 231, 235);
+        color: #27272A;
+      }
+
+      .navbar {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: rgb(229, 231, 235);
+        padding-right: 10px;
+        padding-bottom: 5px;
+      }
+
+      .navbar-logo {
+        margin-top: 10px;
+        width: 70px;
+        margin-bottom: 30px;
+      }
+
+      .navbar-links {
+        display: flex;
+      }
+
+      .nav-link {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        text-decoration: none;
+        color: #27272A;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+      }
+
+      .nav-link-active {
+        display: inline-flex;
+        align-items: center;
+        background-color: #DCDCDC;
+        border: 1px solid #D1D1D6;
+      }
+
+      /* Pages */
+      .page {
+        display: none;
+        background-color: rgb(229, 231, 235);
+        min-height: 100vh;
+        padding-bottom: 100px;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      /* ── HOME ── */
+      .hero {
+        line-height: 0;
+        margin-bottom: 40px;
+      }
+
+      .hero-greeting-badge {
+        background-color: #FCE7F380;
+        font-size: 14px;
+        font-weight: bold;
+        color: #EC4899;
+        border-radius: 20px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #FFC0CB;
+        margin-top: 100px;
+        padding: 2px 7px;
+        cursor: default;
+      }
+
+      .hero-japanese-text{
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 15.75px;
+      }
+
+      .bio {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 14px 0px 0px;
+        max-width: 650px;
+        color: #27272A;
+      }
+
+      .bio-highlight-green {
+        background-color: #ECFDF5;
+        color: #16A34A;
+        padding: 3.5px;
+        border-radius: 20px;
+      }
+
+      .bio-highlight-orange {
+        color: #F97316;
+        background-color: #FFEDD5;
+        padding: 3.5px;
+        border-radius: 20px;
+      }
+
+      .bio-nickname {
+        color: #71717A;
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 60px;
+      }
+
+      .featured-label {
+        font-family: 'Inter', sans-serif;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .featured-cards-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .devlog-card {
+        font-family: 'Inter', sans-serif;
+        padding-top: 1px;
+        padding-right: 15px;
+        padding-left: 10px;
+        padding-bottom: 15px;
+        flex: 1 1 0;
+        width: 100%;  
+        max-width: 300px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        margin-top: 15px;
+        margin-bottom: 16px;
+      }
+
+      .devlog-card-little {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .devlog-card-description {
+        margin-top: 5px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #71717A;
+      }
+
+      .devlog-card-link {
+        color: black;
+        font-size: 14px;
+        text-decoration: underline;
+        text-decoration-color: black;
+      }
+
+      .html { color: #F97316; font-weight: 500; }
+      .css  { color: #4169E1; font-weight: 500; }
+
+      /* ── OTHER PAGES ── */
+      .page-title {
+        font-family: sans-serif;
+        font-weight: 900;
+        font-size: 21px;
+        margin-top: 100px;
+        margin-bottom: 20px;
+      }
+
+      .page-subtitle {
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #27272A;
+        margin: 14px 0px 0px; 
+        max-width: 430px 
+      }
+
+      .site-footer {
+        font-family: monospace;
+        margin-top: 200px;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 5px;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(200, 200, 200);
+        padding-top: 15px;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="page-wrapper">
+
+      <!-- HEADER (stays on every page) -->
+      <div class="navbar">
+        <div>
+          <img class="navbar-logo" src="project icons/okgr.svg" alt="">
+        </div>
+        <div class="navbar-links">
+          <a onclick="showPage('home')"     class="nav-link nav-link-active">🏠 Home</a>
+          <a onclick="showPage('projects')" class="nav-link">📁 Projects</a>
+          <a onclick="showPage('about')"    class="nav-link">About</a>
+        </div>
+      </div>    
+
+      <!-- HOME PAGE -->
+      <div id="home" class="page active">
+
+      <div class="hero">
+        <button class="hero-greeting-badge">Akwaaba</button>
+        <p class="hero-japanese-text">いらっしゃいませ</p>
+      </div>
+
+      <div class="bio">
+        <p style="margin: 28px 0px 0px;">It's me Kevin. I'm a creative trying everything and anything that spikes my interest. Code, Music, Writing?</p>
+        <p style="margin: 14px 0px 0px;">On this site you'll find a few things i want you to know <span class="bio-highlight-green">about me 🙈</span> or <span class="bio-highlight-orange">stuff i'm working on🎢.</span> if you want to know more and keep up, try following my socials.</p>
+        <p class="bio-nickname">You can also call me Kev.</p>
+      </div>
+
+      <div class="featured-label">&#10175; Featured</div>
+
+        <div class="featured-cards-row">
+          <div class="devlog-card">
+            <span class="devlog-card-little" style="display: flex; align-items: center; gap: 5px; margin-top: 15px;"> <img style="width: 15px;" src="project icons/youtube.png" alt="">Devlog</span>
+            <span class="devlog-card-description"><p>This is a Youtube channel I'll be sharing progress on stuff I'm working on. You'll also find some on code, etc. It's fun, check it out!</p></span>
+            <a href="https://www.youtube.com/@notkevwastaken" target="_blank"><span class="devlog-card-link">youtube.com/@notkevwastaken</span></a>
+          </div>
+
+        </div>
+
+        <div style="font-family: 'Inter', sans-serif; padding: 15px; box-shadow: 0 0 5px rgba(0,0,0,0.25); border-radius: 4px; margin-top: 0; margin-bottom: 16px; gap: 5px
+        ;">
+          <p style="font-weight: bold; font-size: 14px; margin-top: 5px;">Skills & Learning Path</p>
+          <p style="font-size: 14px; color: #71717A; margin-top: 5px;">
+            I'm currently building my foundation in software engineering with a focus on web and app development.
+            My current skills include <span class="html">HTML</span> and <span class="css">CSS</span> for building and styling web pages,
+            and I'm actively learning JavaScript as my next step.
+            I'm familiar with Git and GitHub for version control and I use VS Code as my primary code editor.
+            I'm on a clear learning path toward front-end development with React and eventually mobile app development
+            and I'm committed to growing fast.
+          </p>
+        </div>
+
+      
+
+      </div>
+
+      <!-- PROJECTS PAGE -->
+      <div id="projects" class="page">
+        <p class="page-title">Projects</p>
+        <p class="page-subtitle">I've tried many and a lot of things. These are the ones I could collect and showcase; or just proud of them.</p>
+      </div>
+
+      <!-- ABOUT PAGE -->
+      <div id="about" class="page">
+        <p class="page-title">About</p>
+        <p class="page-subtitle">Coming soon...</p>
+      </div>
+
+      <div class="site-footer">
+        <p style="font-family: sans-serif; font-size: 12.25px; color: #71717A; ">&#169; 2026 Kevin. All rights reserved.</p>
+        <p style="margin: 0px 0px 0px 12px; font-size: 12.25px; color: #71717A;">version <span style="color: #16A34A; background-color: #4ADE801A;">2026</span>.5.03.1</p>
+        <p style="padding-left: 12px; font-size: 12.25px; color: #71717A;">Astro x Github Pages</p>
+        <img style=" width: 70px;background-color: transparent; " src="project icons/proudly ghanaian_files/okgr.svg" alt="">
+      </div>
+
+     <script>
+       function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.navbar-links a').forEach(a => a.classList.remove('nav-link-active'));
+        document.getElementById(id).classList.add('active');
+        const tabMap = {
+          home: '.navbar-links a:nth-child(1)',
+          projects: '.navbar-links a:nth-child(2)',
+          about: '.navbar-links a:nth-child(3)',
+        };
+        document.querySelector(tabMap[id]).classList.add('nav-link-active');
+
+        if (id === 'home') {
+          document.title = 'Hi 👋🏾, it\'s me Kevin | Kev';
+        } else {
+          document.title = id.charAt(0).toUpperCase() + id.slice(1) + ' | Kev';
+        }
+
+        history.pushState(null, null, '?page=' + id);
+        window.scrollTo(0, 0);
+
+        const favicons = {
+          home: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
+          projects: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%2354B562'/></svg>",
+          about: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23F5C518'/></svg>",
+        };
+        document.querySelector('link[rel="icon"]').href = favicons[id];
+       }
+
+        history.scrollRestoration = 'manual';
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get('page');
+        if (page) showPage(page);
+      </script>
+
+    </div>
+
+  </body>
+</html>
