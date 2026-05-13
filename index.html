@@ -4,39 +4,12 @@
     <meta charset="UTF-8">
     <title>Hi 👋🏾, it's me Kevin | Kev</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
     <style>
-
-      :root {
-        --page-bg: rgb(229, 231, 235);
-        --text-color: #27272A;
-        --muted-text: #71717A;
-        --nav-active-bg: #DCDCDC;
-        --nav-active-border: #D1D1D6;
-        --card-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-        --footer-border: rgb(200, 200, 200);
-        --link-color: #000000;
-        --theme-button-bg: #DCDCDC;
-        --theme-button-border: #D1D1D6;
-      }
-
-      html[data-theme="dark"] {
-        --page-bg: #18181B;
-        --text-color: #E4E4E7;
-        --muted-text: #A1A1AA;
-        --nav-active-bg: #27272A;
-        --nav-active-border: #3F3F46;
-        --card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10);
-        --footer-border: #3F3F46;
-        --link-color: #FAFAFA;
-        --theme-button-bg: #27272A;
-        --theme-button-border: #3F3F46;
-      }
 
       .page-wrapper {
         max-width: 900px;
@@ -45,16 +18,15 @@
       }
 
       body {
-        background-color: var(--page-bg);
-        color: var(--text-color);
-        transition: background-color 180ms ease, color 180ms ease;
+        background-color: rgb(244, 244, 245);
+        color: #27272A;
       }
 
       .navbar {
         font-family: 'Inter', sans-serif;
         font-size: 14px;
         font-weight: 500;
-        background-color: var(--page-bg);
+        background-color: rgb(244, 244, 245);
         padding-right: 10px;
         padding-bottom: 5px;
       }
@@ -66,9 +38,7 @@
       }
 
       .navbar-links {
-        align-items: center;
         display: flex;
-        gap: 2px;
       }
 
       .nav-link {
@@ -78,7 +48,7 @@
         font-family: 'Inter', sans-serif;
         font-weight: 500;
         text-decoration: none;
-        color: var(--text-color);
+        color: #27272A;
         cursor: pointer;
         font-size: 14px;
 	        padding: 2px 6px;
@@ -88,8 +58,8 @@
 	      }
 
       .nav-link-active {
-        background-color: var(--nav-active-bg);
-        border: 1px solid var(--nav-active-border);
+        background-color: #DCDCDC;
+        border: 1px solid #D1D1D6;
       }
 
       .nav-icon {
@@ -97,26 +67,10 @@
         height: 16px;
       }
 
-      .theme-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-        margin-left: 4px;
-        border-radius: 8px;
-        border: 1px solid var(--theme-button-border);
-        background-color: var(--theme-button-bg);
-        color: var(--text-color);
-        cursor: pointer;
-        font-size: 13px;
-        line-height: 1;
-      }
-
       /* Pages */
       .page {
         display: none;
-        background-color: var(--page-bg);
+        background-color: rgb(244, 244, 245);
         min-height: 100vh;
         padding-bottom: 100px;
       }
@@ -157,7 +111,7 @@
         font-weight: 500;
         margin: 14px 0px 0px;
         max-width: 650px;
-        color: var(--text-color);
+        color: #27272A;
       }
 
 	      .bio-intro {
@@ -187,7 +141,7 @@
       }
 
       .bio-nickname {
-        color: var(--muted-text);
+        color: #71717A;
         font-size: 12.50px;
         font-family: 'Inter', sans-serif;
         margin-bottom: 20px;
@@ -239,7 +193,7 @@
         flex: 1 1 0;
         width: 100%;  
         max-width: 300px;
-        box-shadow: var(--card-shadow);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
 					margin-top: 15px;
 					margin-bottom: 16px;
@@ -263,14 +217,14 @@
         margin-top: 5px;
         margin-bottom: 0;
         font-size: 14px;
-        color: var(--muted-text);
+        color: #71717A;
       }
 
       .devlog-card-link {
-        color: var(--link-color);
+        color: black;
         font-size: 14px;
         text-decoration: underline;
-        text-decoration-color: var(--link-color);
+        text-decoration-color: black;
       }
 
 	      .html { color: #F97316; font-weight: 500; }
@@ -279,7 +233,7 @@
 	      .skills-card {
         font-family: 'Inter', sans-serif;
         padding: 15px;
-        box-shadow: var(--card-shadow);
+        box-shadow: 0 0 5px rgba(0,0,0,0.25);
         border-radius: 4px;
 	        margin-top: 0;
 	        margin-bottom: 16px;
@@ -295,7 +249,7 @@
 
         .skills-card-description {
           font-size: 14px;
-          color: var(--muted-text);
+          color: #71717A;
           margin-top: 5px;
         }
 
@@ -311,7 +265,7 @@
       .page-subtitle {
         font-family: sans-serif;
         font-size: 14px;
-        color: var(--text-color);
+        color: #27272A;
         margin: 14px 0px 0px;
         margin-bottom: 40px;
         max-width: 430px;
@@ -326,7 +280,7 @@
       .site-footer {
         margin-top: 200px;
         margin-bottom: 30px;
-        border-top: 1px solid var(--footer-border);
+        border-top: 1px solid rgb(200, 200, 200);
         padding-top: 15px;
 				font-family: monospace;
 				text-align: left;
@@ -337,7 +291,7 @@
 
       .footer-text {
         font-size: 12.25px;
-        color: var(--muted-text);
+        color: #71717A;
         margin: 0 0 4px 0;
       }
 
@@ -384,7 +338,6 @@
           <a href="?page=about" data-page-link="about" class="nav-link">
             <img class="nav-icon" src="project icons/about.svg" alt=""> About
           </a>
-          <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">☾</button>
         </nav>
       </header>    
 
@@ -465,32 +418,11 @@
 
 	     <script>
 	       const pages = ['home', 'projects', 'about'];
-	       const themeToggle = document.querySelector('.theme-toggle');
 	       const favicons = {
 	        home: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
 	        projects: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%2354B562'/></svg>",
 	        about: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23F5C518'/></svg>",
 	       };
-
-	       function getInitialTheme() {
-	        const savedTheme = localStorage.getItem('theme');
-
-	        if (savedTheme === 'light' || savedTheme === 'dark') {
-	          return savedTheme;
-	        }
-
-	        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	       }
-
-	       function applyTheme(theme) {
-	        document.documentElement.dataset.theme = theme;
-	        localStorage.setItem('theme', theme);
-	        themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
-	        themeToggle.setAttribute(
-	          'aria-label',
-	          theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
-	        );
-	       }
 
 	       function showPage(id, shouldPushState = true) {
 	        const pageId = pages.includes(id) ? id : 'home';
@@ -514,14 +446,8 @@
 	       }
 
 	        history.scrollRestoration = 'manual';
-	        applyTheme(getInitialTheme());
 	        const params = new URLSearchParams(window.location.search);
 	        showPage(params.get('page') || 'home', false);
-
-	        themeToggle.addEventListener('click', () => {
-	          const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-	          applyTheme(nextTheme);
-	        });
 
 	        document.querySelectorAll('[data-page-link]').forEach(link => {
 	          link.addEventListener('click', event => {
