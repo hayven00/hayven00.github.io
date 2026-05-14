@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic setup so the browser knows how to read the page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coast & Clay — Accra</title>
+
+  <!-- Google Fonts: headings use Cormorant, body text uses Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       SIMPLE RESET
+       Make spacing predictable for every element
+       ========================= */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* =========================
+       COLORS AND FONTS
+       We store colors in variables so we can reuse names like --ink
+       ========================= */
+    :root {
+      --ink: #1a1510;
+      --soil: #3c2a18;
+      --clay: #9c5228;
+      --ochre: #c9922b;
+      --sand: #e9d6b2;
+      --linen: #f6efdc;
+      --white: #fefaf2;
+      --muted: #7b6a52;
+      --border: #e0d0b0;
+      --serif: "Cormorant", Georgia, serif;
+      --sans: "Outfit", sans-serif;
+
+      /*
+        Hero right column: full background image.
+        Swap this URL for your own photo (or a file in your folder, e.g. url("images/hero-food.jpg")).
+      */
+      --hero-food-bg: url("https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1600&q=82");
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       NAVIGATION BAR (fixed at top)
+       ========================= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 56px;
+      transition: background 0.4s, padding 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    /* When you scroll down, JavaScript adds the class "scrolled" */
+    nav.scrolled {
+      background: rgba(254, 250, 242, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--border);
+      padding: 16px 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--sans);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* Hamburger button: hidden on desktop, shown on small screens */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    /* Full-screen menu for phones */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--linen);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* =========================
+       HERO SECTION (top of page)
+       Two columns: text on the left, right column uses a food PHOTO AS BACKGROUND
+       ========================= */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      background: var(--soil);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 64px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Small decorative dots in the background */
+    .hero-left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(201, 146, 43, 0.18) 2px, transparent 2px),
+        radial-gradient(circle at 60px 60px, rgba(201, 146, 43, 0.1) 2px, transparent 2px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ochre);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--ochre);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(50px, 5.8vw, 82px);
+      font-weight: 300;
+      line-height: 1.04;
+      color: var(--white);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--ochre);
+    }
+
+    .hero-blurb {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 380px;
+      line-height: 1.85;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-main {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--soil);
+      background: var(--ochre);
+      padding: 13px 32px;
+      border-radius: 1px;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      background: var(--sand);
+    }
+
+    .btn-outline {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover {
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    /*
+      Right side of hero: food photo as full background, tinted with the SAME earthy palette
+      as the rest of the site (--soil, --clay, --ochre, --sand) so it does not look like a
+      random bright stock photo sitting beside the warm left column.
+    */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 48px 80px;
+      /* Fallback while the image loads */
+      background-color: var(--soil);
+      /*
+        Stacked backgrounds (first = painted on top):
+        1) soft bottom shadow in ink/soil — keeps text readable
+        2) diagonal wash in soil → clay → ochre — pulls the photo into your brand colours
+        3) the actual photograph
+      */
+      background-image:
+        linear-gradient(to top, rgba(26, 21, 16, 0.68) 0%, rgba(60, 42, 24, 0.22) 42%, transparent 72%),
+        linear-gradient(
+          155deg,
+          rgba(60, 42, 24, 0.78) 0%,
+          rgba(60, 42, 24, 0.38) 35%,
+          rgba(156, 82, 40, 0.36) 62%,
+          rgba(201, 146, 43, 0.22) 100%
+        ),
+        var(--hero-food-bg);
+      background-size: cover;
+      background-position: center, center, center;
+      background-repeat: no-repeat;
+    }
+
+    /* Thin warm haze (sand/linen) so the photo meets the cream/linen sections below more softly */
+    .hero-right::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 80% at 50% 100%, rgba(233, 214, 178, 0.18) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Coloured stripe at the very top (above the overlay) */
+    .hero-right::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      z-index: 2;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ochre) 0,
+        var(--ochre) 20px,
+        var(--clay) 20px,
+        var(--clay) 40px,
+        var(--soil) 40px,
+        var(--soil) 60px,
+        var(--sand) 60px,
+        var(--sand) 80px
+      );
+    }
+
+    /* All real HTML content sits above the overlay */
+    .hero-right-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 360px;
+    }
+
+    .hero-right-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .hri-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--linen);
+      letter-spacing: 0.04em;
+    }
+
+    .hri-sub {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(233, 214, 178, 0.82);
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    /* Chips: sand border + soil-tinted fill so they match the nav / hero-left world */
+    .chip {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid rgba(233, 214, 178, 0.45);
+      border-radius: 20px;
+      color: var(--linen);
+      background: rgba(60, 42, 24, 0.5);
+    }
+
+    /* =========================
+       SCROLLING TEXT STRIP
+       ========================= */
+    .strip {
+      background: var(--ochre);
+      overflow: hidden;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+
+    .strip-track {
+      display: inline-flex;
+      animation: marqueeSlide 22s linear infinite;
+    }
+
+    .strip-item {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--soil);
+      padding: 0 32px;
+    }
+
+    @keyframes marqueeSlide {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================
+       GENERAL SECTION LAYOUT
+       ========================= */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 56px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 14px;
+    }
+
+    .label::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--clay);
+    }
+
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 3.8vw, 52px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .sec-title em {
+      font-style: italic;
+      color: var(--clay);
+    }
+
+    .sec-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       MENU SECTION
+       ========================= */
+    #menu {
+      background: var(--linen);
+    }
+
+    .menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .tabs {
+      display: flex;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .tab-btn {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: none;
+      border-right: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:last-child {
+      border-right: none;
+    }
+
+    .tab-btn.on {
+      background: var(--soil);
+      color: var(--white);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+
+    .dish {
+      display: none;
+      padding: 28px 32px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.18s;
+    }
+
+    .dish.show {
+      display: block;
+    }
+
+    .dish:hover {
+      background: rgba(201, 146, 43, 0.05);
+    }
+
+    .dish-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .dish-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .dish-price {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--ochre);
+      white-space: nowrap;
+    }
+
+    .dish-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .dtag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .dtag-sig {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .dtag-veg {
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    .dtag-spicy {
+      background: #fff7ed;
+      color: #c2410c;
+    }
+
+    .dtag-new {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    /* =========================
+       LOCATION SECTION (dark background)
+       ========================= */
+    #location {
+      background: var(--soil);
+    }
+
+    #location .label {
+      color: var(--ochre);
+    }
+
+    #location .label::before {
+      background: var(--ochre);
+    }
+
+    #location .sec-title {
+      color: var(--white);
+    }
+
+    #location .sec-sub {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 52px;
+    }
+
+    .loc-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 36px;
+    }
+
+    .loc-card-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .loc-card-title svg {
+      opacity: 0.45;
+      flex-shrink: 0;
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .hr-row:last-child {
+      border: none;
+    }
+
+    .hr-day {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .hr-time {
+      color: var(--white);
+    }
+
+    .hr-off {
+      color: var(--ochre);
+      font-size: 12px;
+    }
+
+    .addr {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 28px;
+    }
+
+    /* Fake map look (CSS blocks), not a real map */
+    .map {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      border-radius: 1px;
+    }
+
+    .mr {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mr.h {
+      left: 0;
+      right: 0;
+    }
+
+    .mr.v {
+      top: 0;
+      bottom: 0;
+    }
+
+    .mb {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 1px;
+    }
+
+    .mpin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mdot {
+      width: 12px;
+      height: 12px;
+      background: var(--ochre);
+      border-radius: 50%;
+      animation: pinPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pinPulse {
+      0%,
+      100% {
+        box-shadow: 0 0 0 4px rgba(201, 146, 43, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(201, 146, 43, 0.06);
+      }
+    }
+
+    .mlabel {
+      margin-top: 8px;
+      background: var(--ink);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 1px;
+      white-space: nowrap;
+    }
+
+    .dir-a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ochre);
+      margin-top: 18px;
+      transition: gap 0.2s;
+    }
+
+    .dir-a:hover {
+      gap: 14px;
+    }
+
+    .info-r {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .info-r:last-child {
+      border: none;
+    }
+
+    .ik {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .iv {
+      color: var(--white);
+      text-align: right;
+    }
+
+    /* =========================
+       CONTACT SECTION
+       ========================= */
+    #contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+    }
+
+    .cdet {
+      display: flex;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cdet:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .cico {
+      width: 40px;
+      height: 40px;
+      background: var(--linen);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      border-radius: 1px;
+    }
+
+    .clabel {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .cval {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .cval a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cval a:hover {
+      color: var(--clay);
+    }
+
+    .contact-note {
+      margin-top: 36px;
+      padding: 26px 28px;
+      background: var(--linen);
+      border-left: 3px solid var(--ochre);
+    }
+
+    .contact-note strong {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-note p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .map-big {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--linen);
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+    }
+
+    .mr2 {
+      position: absolute;
+      background: rgba(60, 42, 24, 0.07);
+    }
+
+    .mr2.h {
+      left: 0;
+      right: 0;
+    }
+
+    .mr2.v {
+      top: 0;
+      bottom: 0;
+    }
+
+    .mb2 {
+      position: absolute;
+      background: rgba(60, 42, 24, 0.05);
+      border-radius: 1px;
+    }
+
+    .mpin2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mdot2 {
+      width: 14px;
+      height: 14px;
+      background: var(--clay);
+      border-radius: 50%;
+      animation: pinPulse2 2s ease-in-out infinite;
+    }
+
+    @keyframes pinPulse2 {
+      0%,
+      100% {
+        box-shadow: 0 0 0 5px rgba(156, 82, 40, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(156, 82, 40, 0.07);
+      }
+    }
+
+    .mlabel2 {
+      margin-top: 9px;
+      background: var(--soil);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 1px;
+      white-space: nowrap;
+    }
+
+    .map-caption {
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .map-caption a {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--clay);
+      transition: color 0.2s;
+    }
+
+    .map-caption a:hover {
+      color: var(--soil);
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    footer {
+      background: var(--ink);
+      padding: 48px 56px;
+    }
+
+    .footer-kente {
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ochre) 0,
+        var(--ochre) 16px,
+        var(--clay) 16px,
+        var(--clay) 32px,
+        var(--soil) 32px,
+        var(--soil) 48px,
+        var(--sand) 48px,
+        var(--sand) 64px
+      );
+      margin-bottom: 32px;
+      opacity: 0.4;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .footer-logo span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ochre);
+      margin-top: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.35);
+      max-width: 240px;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-contact p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.7;
+    }
+
+    .footer-contact a {
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover {
+      color: var(--ochre);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Small fade-in blocks (used on some cards) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =========================
+       MOBILE LAYOUT
+       When the screen is narrow, switch to one column
+       ========================= */
+    @media (max-width: 960px) {
+      nav {
+        padding: 18px 24px;
+      }
+
+      nav.scrolled {
+        padding: 12px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      #home {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 100px 28px 64px;
+        min-height: 60vh;
+      }
+
+      .hero-right {
+        padding: 60px 28px 56px;
+        min-height: 52vh;
+      }
+
+      .wrap {
+        padding: 72px 28px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .loc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      footer {
+        padding: 40px 24px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="nav">
+    <a href="#home" class="nav-logo">
+      Coast &amp; Clay
+      <span>Restaurant · Ridge, Accra</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="hamburger" id="hbg" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Phone menu (hidden until opened) -->
+  <div class="mobile-menu" id="mob">
+    <button class="mobile-close" id="mobClose" type="button" aria-label="Close menu">&#x2715;</button>
+    <a href="#home" class="ml">Home</a>
+    <a href="#menu" class="ml">Menu</a>
+    <a href="#location" class="ml">Location</a>
+    <a href="#contact" class="ml">Contact</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section id="home">
+    <div class="hero-left">
+      <span class="hero-tag">Authentic Ghanaian · Ridge, Accra</span>
+      <h1 class="hero-title">Where the coast<br>meets the <em>clay.</em></h1>
+      <p class="hero-blurb">
+        Coast &amp; Clay is a restaurant in Accra serving Ghanaian dishes with a modern touch.
+        We focus on good food, warm hospitality, and a relaxed dining experience inspired by local culture and everyday flavour.
+      </p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-main">See Our Menu</a>
+        <a href="#contact" class="btn-outline">Find Us</a>
+      </div>
+    </div>
+
+    <!-- Right column: background image is set in CSS (--hero-food-bg on .hero-right). -->
+    <div class="hero-right" aria-label="Hero area with grilled fish and vegetables as a background photograph">
+      <div class="hero-right-content">
+        <div class="hero-right-info">
+          <p class="hri-name">Grilled fish &amp; veg</p>
+          <p class="hri-sub">Coastal cooking, charcoal heat</p>
+        </div>
+
+        <div class="hero-chips">
+          <span class="chip">Dine In</span>
+          <span class="chip">Takeaway</span>
+          <span class="chip">Family Friendly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCROLLING STRIP ========== -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span class="strip-item">Jollof Rice ·</span>
+      <span class="strip-item">Fufu &amp; Soup ·</span>
+      <span class="strip-item">Waakye ·</span>
+      <span class="strip-item">Kelewele ·</span>
+      <span class="strip-item">Grilled Tilapia ·</span>
+      <span class="strip-item">Banku &amp; Okro ·</span>
+      <span class="strip-item">Sobolo ·</span>
+      <span class="strip-item">Kontomire Stew ·</span>
+      <!-- Same line repeated so the animation can loop smoothly -->
+      <span class="strip-item">Jollof Rice ·</span>
+      <span class="strip-item">Fufu &amp; Soup ·</span>
+      <span class="strip-item">Waakye ·</span>
+      <span class="strip-item">Kelewele ·</span>
+      <span class="strip-item">Grilled Tilapia ·</span>
+      <span class="strip-item">Banku &amp; Okro ·</span>
+      <span class="strip-item">Sobolo ·</span>
+      <span class="strip-item">Kontomire Stew ·</span>
+    </div>
+  </div>
+
+  <!-- ========== MENU ========== -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="menu-head">
+        <div>
+          <span class="label">Our Menu</span>
+          <h2 class="sec-title">Good food, every <em>day.</em></h2>
+          <p class="sec-sub">
+            Made fresh from local ingredients. Everything on this menu is a nod to what Ghanaian cooking does best — bold flavour, nothing wasted.
+          </p>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab-btn on" data-cat="starters">Starters</button>
+          <button type="button" class="tab-btn" data-cat="mains">Mains</button>
+          <button type="button" class="tab-btn" data-cat="drinks">Drinks</button>
+        </div>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="dish show" data-cat="starters">
+          <div class="dish-top"><span class="dish-name">Kelewele</span><span class="dish-price">GH₵ 35</span></div>
+          <p class="dish-desc">Ripe plantain cubed and fried with ginger, cloves, and chilli. Served with roasted groundnuts on the side.</p>
+          <span class="dtag dtag-veg">Vegetarian</span>
+        </div>
+        <div class="dish show" data-cat="starters">
+          <div class="dish-top"><span class="dish-name">Accra Fritters</span><span class="dish-price">GH₵ 40</span></div>
+          <p class="dish-desc">Crispy black-eyed pea fritters spiced with scotch bonnet and onion. Served with a tamarind dipping sauce.</p>
+          <span class="dtag dtag-sig">House Favourite</span>
+        </div>
+        <div class="dish show" data-cat="starters">
+          <div class="dish-top"><span class="dish-name">Garden Egg Salad</span><span class="dish-price">GH₵ 38</span></div>
+          <p class="dish-desc">Roasted garden eggs, smoked herring, fresh tomatoes, and a palm oil dressing.</p>
+          <span class="dtag dtag-new">New</span>
+        </div>
+        <div class="dish show" data-cat="starters">
+          <div class="dish-top"><span class="dish-name">Corn &amp; Groundnut</span><span class="dish-price">GH₵ 25</span></div>
+          <p class="dish-desc">Charred sweet corn with salted roasted groundnuts and dried chilli. A timeless Ghanaian street pairing, done properly.</p>
+          <span class="dtag dtag-veg">Vegetarian</span>
+        </div>
+
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Jollof Rice</span><span class="dish-price">GH₵ 95</span></div>
+          <p class="dish-desc">Slow-cooked in a smoky tomato base with fragrant spices. Served with fried plantain and your choice of chicken or fish.</p>
+          <span class="dtag dtag-sig">House Favourite</span>
+        </div>
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Fufu &amp; Light Soup</span><span class="dish-price">GH₵ 110</span></div>
+          <p class="dish-desc">Hand-pounded cassava and plantain fufu in a clear palm-nut broth with goat meat, garden eggs, and fresh peppers.</p>
+          <span class="dtag dtag-spicy">Spicy</span>
+        </div>
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Grilled Whole Tilapia</span><span class="dish-price">GH₵ 130</span></div>
+          <p class="dish-desc">Fresh tilapia in a ginger-pepper rub, charcoal grilled until the skin crisps. Served with banku, shito, and avocado salad.</p>
+          <span class="dtag dtag-sig">Chef's Pick</span>
+        </div>
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Waakye Platter</span><span class="dish-price">GH₵ 90</span></div>
+          <p class="dish-desc">Rice and beans cooked in sorghum leaves with spaghetti, boiled egg, shito, and your choice of protein.</p>
+        </div>
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Banku &amp; Okro Soup</span><span class="dish-price">GH₵ 100</span></div>
+          <p class="dish-desc">Fermented corn and cassava dumplings in a thick okro soup with smoked fish and dried shrimp.</p>
+          <span class="dtag dtag-spicy">Spicy</span>
+        </div>
+        <div class="dish" data-cat="mains">
+          <div class="dish-top"><span class="dish-name">Kontomire Stew &amp; Yam</span><span class="dish-price">GH₵ 85</span></div>
+          <p class="dish-desc">Cocoyam leaves in palm oil with smoked fish and garden eggs. Served with boiled yam or rice. Vegetarian version available.</p>
+          <span class="dtag dtag-veg">Veg. option</span>
+        </div>
+
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Sobolo</span><span class="dish-price">GH₵ 20</span></div>
+          <p class="dish-desc">Chilled hibiscus drink brewed with ginger, cloves, and pineapple. Deep red, naturally sweet, completely refreshing.</p>
+          <span class="dtag dtag-sig">House Favourite</span>
+        </div>
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Fresh Coconut Water</span><span class="dish-price">GH₵ 18</span></div>
+          <p class="dish-desc">Straight from the shell. Chilled and served as it is — nothing added, nothing taken away.</p>
+        </div>
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Ginger &amp; Lemon Brew</span><span class="dish-price">GH₵ 22</span></div>
+          <p class="dish-desc">House-made ginger infusion with fresh lemon and a pinch of turmeric. Served hot or over ice.</p>
+          <span class="dtag dtag-new">New</span>
+        </div>
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Palm Wine</span><span class="dish-price">GH₵ 30</span></div>
+          <p class="dish-desc">Freshly tapped, lightly fermented. Slightly cloudy and naturally effervescent — as it should be.</p>
+          <span class="dtag dtag-sig">Traditional</span>
+        </div>
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Malta &amp; Ice</span><span class="dish-price">GH₵ 15</span></div>
+          <p class="dish-desc">Cold Malta served over ice. A Ghanaian classic — nothing complicated about it.</p>
+        </div>
+        <div class="dish" data-cat="drinks">
+          <div class="dish-top"><span class="dish-name">Bissap Lemonade</span><span class="dish-price">GH₵ 24</span></div>
+          <p class="dish-desc">Hibiscus and lemon blended with a hint of mint. Light, sharp, and just sweet enough.</p>
+          <span class="dtag dtag-new">New</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOCATION ========== -->
+  <section id="location">
+    <div class="wrap">
+      <span class="label">Find Us</span>
+      <h2 class="sec-title">Hours <em>&amp;</em> Location</h2>
+      <p class="sec-sub">Walk-ins are welcome. We're open most of the week — come as you are.</p>
+
+      <div class="loc-grid">
+
+        <div class="loc-card reveal">
+          <h3 class="loc-card-title">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <circle cx="9" cy="9" r="7" />
+              <polyline points="9,4.5 9,9 11.5,11.5" />
+            </svg>
+            Opening Hours
+          </h3>
+          <ul class="hours-list">
+            <li class="hr-row"><span class="hr-day">Monday – Friday</span><span class="hr-time">8:00 am – 10:00 pm</span></li>
+            <li class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">11:00 am – 12:00 am</span></li>
+            <li class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">11:00 am – 12:00 am</span></li>
+          </ul>
+        </div>
+
+        <div class="loc-card reveal">
+          <h3 class="loc-card-title">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <path d="M9 2C6.2 2 4 4.2 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.8-2.2-5-5-5z" />
+              <circle cx="9" cy="7" r="2" />
+            </svg>
+            Address
+          </h3>
+          <p class="addr">Ridge<br>Accra, Ghana</p>
+          <div class="map">
+            <div class="mr h" style="top:47%;height:9px;"></div>
+            <div class="mr v" style="left:46%;width:9px;"></div>
+            <div class="mr h" style="top:24%;height:4px;opacity:0.5;"></div>
+            <div class="mr h" style="top:71%;height:4px;opacity:0.5;"></div>
+            <div class="mr v" style="left:24%;width:4px;opacity:0.5;"></div>
+            <div class="mr v" style="left:69%;width:4px;opacity:0.5;"></div>
+            <div class="mb" style="top:10%;left:10%;width:28%;height:11%;"></div>
+            <div class="mb" style="top:10%;left:58%;width:30%;height:13%;"></div>
+            <div class="mb" style="top:58%;left:10%;width:24%;height:18%;"></div>
+            <div class="mb" style="top:60%;left:58%;width:30%;height:14%;"></div>
+            <div class="mpin"><div class="mdot"></div><div class="mlabel">Coast &amp; Clay</div></div>
+          </div>
+          <a href="https://maps.google.com/?q=Ridge,Accra,Ghana" target="_blank" rel="noopener" class="dir-a">Get Directions →</a>
+        </div>
+
+        <div class="loc-card reveal">
+          <h3 class="loc-card-title">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <rect x="2" y="4" width="14" height="11" rx="1" />
+              <polyline points="2,4 9,10 16,4" />
+            </svg>
+            Good to Know
+          </h3>
+          <div class="info-r"><span class="ik">Dine in</span><span class="iv">Yes</span></div>
+          <div class="info-r"><span class="ik">Takeaway</span><span class="iv">Available daily</span></div>
+          <div class="info-r"><span class="ik">Parking</span><span class="iv">Street parking available</span></div>
+          <div class="info-r"><span class="ik">Family friendly</span><span class="iv">Yes</span></div>
+          <div class="info-r"><span class="ik">Private events</span><span class="iv">On request</span></div>
+          <div class="info-r"><span class="ik">Dress code</span><span class="iv">Come as you are</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact">
+    <div class="wrap">
+      <span class="label">Contact</span>
+      <h2 class="sec-title">We'd love to <em>hear from you.</em></h2>
+      <p class="sec-sub">Give us a call, send an email, or just show up. We're always glad to see you.</p>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="cdet">
+            <div class="cico" aria-hidden="true">📞</div>
+            <div>
+              <div class="clabel">Phone</div>
+              <div class="cval"><a href="tel:+233554744061">+233 55 474 4061</a></div>
+            </div>
+          </div>
+          <div class="cdet">
+            <div class="cico" aria-hidden="true">✉️</div>
+            <div>
+              <div class="clabel">Email</div>
+              <div class="cval"><a href="mailto:info@coastandclay.com">info@coastandclay.com</a></div>
+            </div>
+          </div>
+          <div class="cdet">
+            <div class="cico" aria-hidden="true">✉️</div>
+            <div>
+              <div class="clabel">Gmail</div>
+              <div class="cval"><a href="mailto:coastandclay.accra@gmail.com">coastandclay.accra@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="cdet">
+            <div class="cico" aria-hidden="true">📍</div>
+            <div>
+              <div class="clabel">Address</div>
+              <div class="cval">Ridge, Accra, Ghana</div>
+            </div>
+          </div>
+          <div class="contact-note">
+            <strong>Coming in for a big group?</strong>
+            <p>For groups of 8 or more or private event enquiries, reach us by phone or email so we can get things sorted in advance.</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="map-big">
+            <div class="mr2 h" style="top:47%;height:8px;"></div>
+            <div class="mr2 v" style="left:46%;width:8px;"></div>
+            <div class="mr2 h" style="top:24%;height:4px;opacity:0.6;"></div>
+            <div class="mr2 h" style="top:72%;height:4px;opacity:0.6;"></div>
+            <div class="mr2 v" style="left:24%;width:4px;opacity:0.6;"></div>
+            <div class="mr2 v" style="left:70%;width:4px;opacity:0.6;"></div>
+            <div class="mb2" style="top:10%;left:10%;width:28%;height:11%;"></div>
+            <div class="mb2" style="top:10%;left:58%;width:30%;height:13%;"></div>
+            <div class="mb2" style="top:58%;left:10%;width:24%;height:18%;"></div>
+            <div class="mb2" style="top:60%;left:58%;width:30%;height:14%;"></div>
+            <div class="mpin2"><div class="mdot2"></div><div class="mlabel2">Coast &amp; Clay · Ridge, Accra</div></div>
+          </div>
+          <div class="map-caption">
+            <span>Ridge, Accra, Ghana</span>
+            <a href="https://maps.google.com/?q=Ridge,Accra,Ghana" target="_blank" rel="noopener">Open in Maps →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-kente"></div>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Coast &amp; Clay<span>Ridge · Accra · Ghana</span></div>
+        <p class="footer-tagline">Ghanaian dishes with a modern touch. Good food, warm hospitality, a relaxed experience.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <p><a href="tel:+233554744061">+233 55 474 4061</a></p>
+        <p><a href="mailto:coastandclay.accra@gmail.com">coastandclay.accra@gmail.com</a></p>
+        <p>Ridge, Accra, Ghana</p>
+        <p style="margin-top:8px;font-size:11px;letter-spacing:0.06em;opacity:0.7;">Mon–Fri &nbsp;8:00 am – 10:00 pm<br>Sat–Sun &nbsp;11:00 am – 12:00 am</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Coast &amp; Clay. All rights reserved.</p>
+      <p class="footer-copy" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Accra, Ghana</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- NAV BAR: add shadow after you scroll ---------- */
+    const navBar = document.getElementById("nav");
+
+    window.addEventListener("scroll", function () {
+      const scrolledDown = window.scrollY > 40;
+      navBar.classList.toggle("scrolled", scrolledDown);
+    });
+
+    /* ---------- MOBILE MENU: open / close ---------- */
+    const hamburgerButton = document.getElementById("hbg");
+    const mobileMenu = document.getElementById("mob");
+    const mobileCloseButton = document.getElementById("mobClose");
+
+    hamburgerButton.addEventListener("click", function () {
+      mobileMenu.classList.add("open");
+    });
+
+    mobileCloseButton.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+    });
+
+    // When a menu link is clicked, hide the mobile menu again
+    const mobileLinks = document.querySelectorAll(".ml");
+    mobileLinks.forEach(function (oneLink) {
+      oneLink.addEventListener("click", function () {
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    /* ---------- MENU TABS: show only dishes for the chosen category ---------- */
+    const allTabButtons = document.querySelectorAll(".tab-btn");
+
+    allTabButtons.forEach(function (clickedButton) {
+      clickedButton.addEventListener("click", function () {
+        // Remove "on" from every tab, then add "on" only to the tab that was clicked
+        allTabButtons.forEach(function (btn) {
+          btn.classList.remove("on");
+        });
+        clickedButton.classList.add("on");
+
+        // Read which category this button is for (starters, mains, or drinks)
+        const categoryName = clickedButton.dataset.cat;
+
+        // Loop every dish card and show it only if its data-cat matches
+        const allDishes = document.querySelectorAll(".dish");
+        allDishes.forEach(function (dishCard) {
+          const isMatch = dishCard.dataset.cat === categoryName;
+          dishCard.classList.toggle("show", isMatch);
+        });
+      });
+    });
+
+    /* ---------- REVEAL ON SCROLL: fade in location cards ---------- */
+    const observerOptions = { threshold: 0.1 };
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll(".reveal");
+    revealElements.forEach(function (element) {
+      revealObserver.observe(element);
+    });
+
+    /* ---------- HERO TEXT: simple fade-in when page loads ---------- */
+    const heroLeftChildren = document.querySelectorAll(".hero-left > *");
+    heroLeftChildren.forEach(function (child, index) {
+      child.style.opacity = "0";
+      child.style.transform = "translateY(16px)";
+      child.style.transition =
+        "opacity 0.65s ease " + (160 + index * 100) + "ms, transform 0.65s ease " + (160 + index * 100) + "ms";
+
+      window.setTimeout(function () {
+        child.style.opacity = "1";
+        child.style.transform = "none";
+      }, 30);
+    });
+  </script>
+</body>
+</html>
