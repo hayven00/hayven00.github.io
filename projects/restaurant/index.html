@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coast & Clay — Accra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%233A2012'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1C1410;
+  --brown:  #3A2012;
+  --clay:   #8B5E3C;
+  --warm:   #C4895A;
+  --sand:   #E2C9A8;
+  --linen:  #F2EAD8;
+  --cream:  #F8F3EA;
+  --white:  #FDFAF4;
+  --muted:  #7A6A56;
+  --border: rgba(138,94,60,0.13);
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.65; overflow-x: hidden; }
+
+/* ══ NAV ══ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 32px 64px;
+  transition: background 0.4s, padding 0.3s, box-shadow 0.3s;
+}
+#nav.scrolled {
+  background: rgba(248,243,234,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 18px 64px;
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 20px; font-weight: 400;
+  color: var(--white); text-decoration: none;
+  letter-spacing: 0.02em; line-height: 1.1;
+  transition: color 0.3s;
+}
+.nav-logo span {
+  display: block; font-family: var(--sans);
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-top: 3px;
+  transition: color 0.3s;
+}
+#nav.scrolled .nav-logo { color: var(--ink); }
+#nav.scrolled .nav-logo span { color: var(--clay); }
+
+.nav-links {
+  display: flex; gap: 44px; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+#nav.scrolled .nav-links a { color: var(--muted); }
+#nav.scrolled .nav-links a:hover { color: var(--ink); }
+
+.nav-contact {
+  font-size: 10.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.22);
+  padding-bottom: 2px; transition: all 0.2s;
+}
+.nav-contact:hover { color: var(--white); border-color: rgba(255,255,255,0.6); }
+#nav.scrolled .nav-contact { color: var(--clay); border-color: rgba(138,94,60,0.3); }
+#nav.scrolled .nav-contact:hover { border-color: var(--clay); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--white); transition: background 0.3s; }
+#nav.scrolled .hamburger span { background: var(--ink); }
+
+.mobile-menu {
+  display: none; position: fixed; inset: 0;
+  background: var(--white); z-index: 199;
+  flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--serif); font-size: 2.6rem;
+  font-weight: 300; color: var(--ink); text-decoration: none;
+  letter-spacing: 0.02em; transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--clay); }
+.mob-close {
+  position: absolute; top: 28px; right: 32px;
+  background: none; border: none; font-size: 20px;
+  cursor: pointer; color: var(--muted);
+}
+
+/* ══ HERO ══ */
+#home {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to bottom, rgba(28,20,16,0.52) 0%, rgba(28,20,16,0.35) 45%, rgba(28,20,16,0.65) 100%),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover; background-position: center;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 680px; padding: 0 32px;
+}
+.hero-eyebrow {
+  font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--sand); margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7.5vw, 100px);
+  font-weight: 300; line-height: 1.02;
+  color: var(--white); letter-spacing: 0.01em;
+  margin-bottom: 18px;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-title em { font-style: italic; color: var(--sand); }
+.hero-tagline {
+  font-family: var(--serif);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 300; font-style: italic;
+  color: rgba(253,250,244,0.55);
+  margin-bottom: 44px; line-height: 1.5;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-btns {
+  display: flex; gap: 20px;
+  justify-content: center; align-items: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+.btn-primary {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--brown); background: var(--sand);
+  padding: 13px 34px; text-decoration: none; border: none;
+  cursor: pointer; transition: background 0.2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--white); }
+.btn-ghost {
+  font-size: 10.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(253,250,244,0.55); text-decoration: none;
+  border-bottom: 1px solid rgba(253,250,244,0.22); padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); border-color: rgba(253,250,244,0.6); }
+
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 1; opacity: 0; animation: fadeUp 0.8s 1s forwards;
+}
+.scroll-hint span { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(253,250,244,0.35); }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(253,250,244,0.35), transparent); }
+
+/* ══ TICKER ══ */
+.ticker { background: var(--brown); overflow: hidden; padding: 12px 0; }
+.ticker-track { display: inline-flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+.ticker-item { font-size: 9.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(226,201,168,0.65); padding: 0 44px; }
+.ticker-dot { color: var(--warm); opacity: 0.35; font-size: 6px; align-self: center; flex-shrink: 0; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ══ SHARED ══ */
+.section-wrap { max-width: 1080px; margin: 0 auto; padding: 96px 64px; }
+
+.eyebrow {
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--clay); flex-shrink: 0; }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 300; line-height: 1.1; color: var(--ink);
+}
+.section-title em { font-style: italic; color: var(--clay); }
+
+/* ══ MENU ══ */
+#menu { background: var(--linen); }
+
+.menu-head {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-bottom: 44px;
+}
+.tabs {
+  display: flex; background: rgba(138,94,60,0.08);
+  padding: 3px; gap: 2px;
+}
+.tab-btn {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 9px 22px; border: none; background: transparent;
+  color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.tab-btn.on { background: var(--brown); color: var(--white); }
+.tab-btn:not(.on):hover { color: var(--ink); }
+
+.menu-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+}
+.dish { display: none; }
+.dish.show { display: block; }
+.dish-inner {
+  background: var(--white); padding: 26px 30px; height: 100%;
+  transition: background 0.18s;
+}
+.dish-inner:hover { background: var(--cream); }
+.dish-top {
+  display: flex; justify-content: space-between;
+  align-items: baseline; gap: 16px; margin-bottom: 8px;
+}
+.dish-name { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--ink); line-height: 1.2; }
+.dish-price { font-family: var(--serif); font-size: 17px; font-weight: 300; color: var(--warm); white-space: nowrap; flex-shrink: 0; }
+.dish-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.dish-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.dtag { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+.sig   { background: #fef3c7; color: #92400e; }
+.veg   { background: #ecfdf5; color: #065f46; }
+.spicy { background: #fff7ed; color: #c2410c; }
+.new   { background: #eff6ff; color: #1d4ed8; }
+.cont  { background: #f3f0ff; color: #4c1d95; }
+
+.menu-note {
+  margin-top: 24px; font-size: 12px; font-weight: 300; color: var(--muted);
+  padding-top: 20px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.menu-note::before { content: ''; width: 16px; height: 1px; background: var(--clay); flex-shrink: 0; }
+
+/* ══ ABOUT ══ */
+#about { background: var(--white); }
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; }
+.about-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+.about-img-wrap:hover img { transform: scale(1.03); }
+.about-img-label {
+  position: absolute; bottom: 20px; left: 20px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,250,244,0.6); background: rgba(28,20,16,0.38);
+  padding: 5px 12px; backdrop-filter: blur(4px);
+}
+.about-text { display: flex; flex-direction: column; gap: 16px; }
+.about-body { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.9; }
+.about-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px;
+}
+.astat { background: var(--cream); padding: 20px 16px; text-align: center; }
+.astat-num { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--clay); line-height: 1; margin-bottom: 5px; }
+.astat-label { font-size: 9.5px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+/* ══ CONTACT (with location inside) ══ */
+#contact { background: var(--brown); }
+
+.contact-eyebrow { color: var(--warm) !important; }
+.contact-eyebrow::before { background: var(--warm) !important; }
+.contact-title { color: var(--white) !important; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; margin-top: 52px; align-items: start;
+}
+
+/* Left — contact details */
+.contact-details { display: flex; flex-direction: column; gap: 0; }
+.citem {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.citem:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.cicon {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.clabel { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 4px; }
+.cval { font-size: 14.5px; font-weight: 300; color: rgba(253,250,244,0.85); line-height: 1.5; }
+.cval a { color: rgba(253,250,244,0.85); text-decoration: none; transition: color 0.2s; }
+.cval a:hover { color: var(--white); }
+
+.contact-note {
+  margin-top: 28px; padding: 22px 24px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--warm);
+}
+.contact-note strong { display: block; font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.contact-note p { font-size: 13px; font-weight: 300; color: rgba(253,250,244,0.45); line-height: 1.8; }
+
+/* Right — location block (new style: stacked cards) */
+.location-stack { display: flex; flex-direction: column; gap: 2px; }
+
+.loc-block {
+  background: rgba(255,255,255,0.04);
+  padding: 28px 28px;
+  transition: background 0.2s;
+}
+.loc-block:hover { background: rgba(255,255,255,0.07); }
+
+.loc-block-title {
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--warm); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.loc-block-title svg { opacity: 0.5; }
+
+.hours-rows { display: flex; flex-direction: column; }
+.hr {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 12px;
+}
+.hr:last-child { border-bottom: none; }
+.hr-day { font-size: 13px; font-weight: 300; color: rgba(253,250,244,0.45); }
+.hr-time { font-size: 13px; font-weight: 400; color: var(--sand); }
+
+.loc-address {
+  font-family: var(--serif); font-size: 20px;
+  font-weight: 300; font-style: italic;
+  color: var(--white); line-height: 1.5; margin-bottom: 16px;
+}
+
+.map {
+  position: relative; width: 100%; height: 110px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden; margin-bottom: 16px;
+}
+.mr { position: absolute; background: rgba(255,255,255,0.06); }
+.mr.h { left: 0; right: 0; }
+.mr.v { top: 0; bottom: 0; }
+.mb { position: absolute; background: rgba(255,255,255,0.05); border-radius: 1px; }
+.mpin { position: absolute; top: 34%; left: 43%; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mdot { width: 8px; height: 8px; background: var(--warm); border-radius: 50%; box-shadow: 0 0 0 3px rgba(196,137,90,0.2); }
+.mlabel { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; color: var(--warm); background: rgba(58,32,18,0.85); padding: 2px 7px; white-space: nowrap; }
+
+.dir-link {
+  font-size: 10.5px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--warm); text-decoration: none;
+  border-bottom: 1px solid rgba(196,137,90,0.3); padding-bottom: 2px;
+  display: inline-block; transition: border-color 0.2s;
+}
+.dir-link:hover { border-color: var(--warm); }
+
+.info-rows { display: flex; flex-direction: column; }
+.irow {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.irow:last-child { border-bottom: none; }
+.ikey { font-size: 12.5px; font-weight: 300; color: rgba(253,250,244,0.35); }
+.ival { font-size: 12.5px; font-weight: 400; color: rgba(253,250,244,0.75); text-align: right; }
+
+/* ══ FOOTER — ultra minimal ══ */
+footer {
+  background: var(--ink);
+  padding: 52px 64px 28px;
+  text-align: center;
+}
+.footer-logo-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  margin-bottom: 20px;
+}
+.footer-name {
+  font-family: var(--serif); font-size: 24px; font-weight: 300;
+  color: rgba(255,255,255,0.75); letter-spacing: 0.04em; text-decoration: none;
+}
+.footer-sub {
+  font-size: 8px; font-weight: 400; letter-spacing: 0.28em;
+  text-transform: uppercase; color: rgba(255,255,255,0.2);
+}
+.footer-nav {
+  display: flex; justify-content: center; gap: 36px;
+  list-style: none; margin-bottom: 36px;
+}
+.footer-nav a {
+  font-size: 10.5px; font-weight: 300; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.28);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-nav a:hover { color: rgba(255,255,255,0.6); }
+.footer-rule { width: 40px; height: 1px; background: rgba(255,255,255,0.08); margin: 0 auto 24px; }
+.footer-copy {
+  font-size: 11px; font-weight: 300;
+  color: rgba(255,255,255,0.15); letter-spacing: 0.06em;
+}
+
+/* ══ REVEAL ══ */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 960px) {
+  #nav { padding: 22px 28px; }
+  #nav.scrolled { padding: 16px 28px; }
+  .nav-links, .nav-contact { display: none; }
+  .hamburger { display: flex; }
+  .section-wrap { padding: 72px 28px; }
+  .menu-head { flex-direction: column; align-items: flex-start; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+  .about-img-wrap { aspect-ratio: 16/9; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  footer { padding: 44px 28px 24px; }
+  .footer-nav { flex-wrap: wrap; gap: 20px; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: clamp(44px, 12vw, 64px); }
+  .about-stats { grid-template-columns: 1fr; }
+  .tabs { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mob">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#home" class="ml">Home</a>
+  <a href="#menu" class="ml">Menu</a>
+  <a href="#about" class="ml">About</a>
+  <a href="#contact" class="ml">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Coast &amp; Clay<span>Ridge · Accra · Ghana</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-contact">Find us</a>
+  <button class="hamburger" id="hbg" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ HOME ══ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 2019 · Ridge, Accra</p>
+    <h1 class="hero-title">Coast <em>&amp;</em> Clay</h1>
+    <p class="hero-tagline">Good food, honest cooking, warm welcome.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">See the menu</a>
+      <a href="#about" class="btn-ghost">Our story</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Mon – Fri · 8am – 10pm</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Sat &amp; Sun · 11am – 12am</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Ridge, Accra</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Dine in &amp; Takeaway</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Ghanaian &amp; Continental</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">+233 55 474 4061</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Mon – Fri · 8am – 10pm</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Sat &amp; Sun · 11am – 12am</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Ridge, Accra</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Dine in &amp; Takeaway</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Ghanaian &amp; Continental</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">+233 55 474 4061</span><span class="ticker-dot">◆</span>
+  </div>
+</div>
+
+<!-- ══ MENU ══ -->
+<section id="menu">
+  <div class="section-wrap">
+    <div class="menu-head reveal">
+      <div>
+        <p class="eyebrow">What we serve</p>
+        <h2 class="section-title">The <em>menu</em></h2>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn on" data-cat="starters">Starters</button>
+        <button class="tab-btn" data-cat="mains">Mains</button>
+        <button class="tab-btn" data-cat="continental">Continental</button>
+        <button class="tab-btn" data-cat="drinks">Drinks</button>
+      </div>
+    </div>
+    <div class="menu-grid">
+
+      <!-- STARTERS -->
+      <div class="dish show" data-cat="starters"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Kelewele Bites</span><span class="dish-price">GH₵ 45</span></div>
+        <p class="dish-desc">Spiced plantain cubes fried golden, with a house ginger-chilli dipping sauce.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegan</span><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <div class="dish show" data-cat="starters"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Yam Croquettes</span><span class="dish-price">GH₵ 52</span></div>
+        <p class="dish-desc">Crisp yam shells filled with spiced minced turkey, served with herb aioli.</p>
+        <div class="dish-tags"><span class="dtag new">New</span></div>
+      </div></div>
+
+      <div class="dish show" data-cat="starters"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Mushroom Bruschetta</span><span class="dish-price">GH₵ 55</span></div>
+        <p class="dish-desc">Toasted sourdough with sautéed mushrooms, garlic and fresh thyme.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegetarian</span><span class="dtag cont">Continental</span></div>
+      </div></div>
+
+      <div class="dish show" data-cat="starters"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Smoked Fish Tartine</span><span class="dish-price">GH₵ 68</span></div>
+        <p class="dish-desc">Open bread with smoked tilapia, avocado cream and pickled shallots.</p>
+        <div class="dish-tags"><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <!-- MAINS -->
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Jollof Rice &amp; Chicken</span><span class="dish-price">GH₵ 140</span></div>
+        <p class="dish-desc">Party-style jollof, slow-cooked and smoky, with grilled chicken and fried plantain.</p>
+        <div class="dish-tags"><span class="dtag sig">Signature</span><span class="dtag spicy">Spicy</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Grilled Tilapia Plate</span><span class="dish-price">GH₵ 165</span></div>
+        <p class="dish-desc">Whole tilapia in shito and citrus, charcoal-grilled with banku and garden egg stew.</p>
+        <div class="dish-tags"><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Fufu &amp; Light Soup</span><span class="dish-price">GH₵ 110</span></div>
+        <p class="dish-desc">Handpounded fufu in a clear tomato and pepper broth with goat meat or mushroom.</p>
+        <div class="dish-tags"><span class="dtag new">New</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Waakye Platter</span><span class="dish-price">GH₵ 125</span></div>
+        <p class="dish-desc">Slow-cooked rice and beans with wele, spaghetti, gari, shito and boiled egg.</p>
+        <div class="dish-tags"><span class="dtag spicy">Spicy option</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Kontomire Stew</span><span class="dish-price">GH₵ 95</span></div>
+        <p class="dish-desc">Cocoyam leaves in a rich palm-nut base with boiled yam and eggs.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegetarian</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="mains"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Clay Lamb Chops</span><span class="dish-price">GH₵ 210</span></div>
+        <p class="dish-desc">Spiced rack of lamb, slow-roasted, with coconut rice and roasted okra.</p>
+        <div class="dish-tags"><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <!-- CONTINENTAL -->
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Grilled Salmon Fillet</span><span class="dish-price">GH₵ 195</span></div>
+        <p class="dish-desc">Pan-seared salmon with lemon butter sauce, steamed vegetables and seasoned rice.</p>
+        <div class="dish-tags"><span class="dtag cont">Continental</span><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Chicken Piccata</span><span class="dish-price">GH₵ 155</span></div>
+        <p class="dish-desc">Pan-fried chicken breast in a lemon-caper sauce, served with buttered pasta.</p>
+        <div class="dish-tags"><span class="dtag cont">Continental</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Beef Steak &amp; Fries</span><span class="dish-price">GH₵ 220</span></div>
+        <p class="dish-desc">Tender sirloin cooked to order with crispy fries and peppercorn sauce.</p>
+        <div class="dish-tags"><span class="dtag cont">Continental</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Mushroom Risotto</span><span class="dish-price">GH₵ 135</span></div>
+        <p class="dish-desc">Creamy arborio rice with mixed mushrooms, white wine and fresh herbs.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegetarian</span><span class="dtag cont">Continental</span><span class="dtag new">New</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Club Sandwich</span><span class="dish-price">GH₵ 98</span></div>
+        <p class="dish-desc">Triple-stacked toasted bread with chicken, lettuce, tomato and mayo. Served with fries.</p>
+        <div class="dish-tags"><span class="dtag cont">Continental</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="continental"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Pasta Arrabiata</span><span class="dish-price">GH₵ 120</span></div>
+        <p class="dish-desc">Penne in a spiced tomato sauce with garlic, olive oil and fresh basil.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegetarian</span><span class="dtag cont">Continental</span></div>
+      </div></div>
+
+      <!-- DRINKS -->
+      <div class="dish" data-cat="drinks"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Sobolo Spritz</span><span class="dish-price">GH₵ 35</span></div>
+        <p class="dish-desc">House hibiscus water, fresh ginger and lime zest — lightly sparkling.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegan</span><span class="dtag sig">Signature</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="drinks"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Fresh Coconut Water</span><span class="dish-price">GH₵ 25</span></div>
+        <p class="dish-desc">Served chilled, straight from the shell, with a wedge of lime.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegan</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="drinks"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Passion Fruit Lemonade</span><span class="dish-price">GH₵ 32</span></div>
+        <p class="dish-desc">Fresh lemon, passion fruit pulp, mint and a touch of honey over ice.</p>
+        <div class="dish-tags"><span class="dtag veg">Vegan</span></div>
+      </div></div>
+
+      <div class="dish" data-cat="drinks"><div class="dish-inner">
+        <div class="dish-top"><span class="dish-name">Asaana</span><span class="dish-price">GH₵ 28</span></div>
+        <p class="dish-desc">Fermented corn drink, sweet and lightly tangy — a beloved Ghanaian classic.</p>
+        <div class="dish-tags"><span class="dtag new">New</span></div>
+      </div></div>
+
+    </div>
+    <p class="menu-note reveal">Prices include VAT. Allergen info available on request. Ask about today's specials.</p>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-layout">
+      <div class="about-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Coast & Clay restaurant" loading="lazy">
+        <span class="about-img-label">Our kitchen · Ridge, Accra</span>
+      </div>
+      <div class="about-text reveal d1">
+        <p class="eyebrow">Our story</p>
+        <h2 class="section-title">Rooted in Ghana,<br><em>refined for today.</em></h2>
+        <p class="about-body">Coast &amp; Clay opened in 2019 with one idea: Ghanaian food deserves the same care and intention as any great cuisine. Our chefs grew up eating these dishes — they know what they're supposed to taste like. Every recipe starts there.</p>
+        <p class="about-body">Alongside our Ghanaian roots, we offer carefully chosen continental dishes held to the same standard — honest, well-made, and worth your time.</p>
+        <div class="about-stats">
+          <div class="astat"><div class="astat-num">2019</div><div class="astat-label">Est.</div></div>
+          <div class="astat"><div class="astat-num">18+</div><div class="astat-label">Dishes</div></div>
+          <div class="astat"><div class="astat-num">5★</div><div class="astat-label">Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT + LOCATION ══ -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="reveal">
+      <p class="eyebrow contact-eyebrow">Find us</p>
+      <h2 class="section-title contact-title">Come <em>see us.</em></h2>
+    </div>
+    <div class="contact-grid">
+
+      <!-- LEFT: contact details -->
+      <div class="reveal">
+        <div class="contact-details">
+          <div class="citem">
+            <div class="cicon">📞</div>
+            <div><div class="clabel">Phone</div><div class="cval"><a href="tel:+233554744061">+233 55 474 4061</a></div></div>
+          </div>
+          <div class="citem">
+            <div class="cicon">✉️</div>
+            <div><div class="clabel">Email</div><div class="cval"><a href="mailto:coastandclay.accra@gmail.com">coastandclay.accra@gmail.com</a></div></div>
+          </div>
+          <div class="citem">
+            <div class="cicon">📍</div>
+            <div><div class="clabel">Address</div><div class="cval">Ridge, Accra, Ghana</div></div>
+          </div>
+        </div>
+        <div class="contact-note">
+          <strong>Large group or private event?</strong>
+          <p>For groups of 8 or more, please call or email ahead so we can take good care of you.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: location stacked blocks -->
+      <div class="location-stack reveal d1">
+        <div class="loc-block">
+          <p class="loc-block-title">
+            <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><polyline points="9,4.5 9,9 11.5,11.5"/></svg>
+            Opening Hours
+          </p>
+          <div class="hours-rows">
+            <div class="hr"><span class="hr-day">Mon – Fri</span><span class="hr-time">8:00 am – 10:00 pm</span></div>
+            <div class="hr"><span class="hr-day">Saturday</span><span class="hr-time">11:00 am – 12:00 am</span></div>
+            <div class="hr"><span class="hr-day">Sunday</span><span class="hr-time">11:00 am – 12:00 am</span></div>
+          </div>
+        </div>
+        <div class="loc-block">
+          <p class="loc-block-title">
+            <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2C6.2 2 4 4.2 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.8-2.2-5-5-5z"/><circle cx="9" cy="7" r="2"/></svg>
+            Location
+          </p>
+          <p class="loc-address">Ridge, Accra</p>
+          <div class="map">
+            <div class="mr h" style="top:47%;height:8px;"></div>
+            <div class="mr v" style="left:46%;width:8px;"></div>
+            <div class="mr h" style="top:24%;height:4px;opacity:0.4;"></div>
+            <div class="mr h" style="top:71%;height:4px;opacity:0.4;"></div>
+            <div class="mr v" style="left:24%;width:4px;opacity:0.4;"></div>
+            <div class="mr v" style="left:69%;width:4px;opacity:0.4;"></div>
+            <div class="mb" style="top:10%;left:10%;width:28%;height:11%;"></div>
+            <div class="mb" style="top:10%;left:58%;width:30%;height:13%;"></div>
+            <div class="mb" style="top:58%;left:10%;width:24%;height:18%;"></div>
+            <div class="mb" style="top:60%;left:58%;width:30%;height:14%;"></div>
+            <div class="mpin"><div class="mdot"></div><div class="mlabel">Coast &amp; Clay</div></div>
+          </div>
+          <a href="https://maps.google.com/?q=Ridge,Accra,Ghana" target="_blank" rel="noopener" class="dir-link">Get Directions →</a>
+        </div>
+        <div class="loc-block">
+          <p class="loc-block-title">
+            <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="14" height="11" rx="1"/><polyline points="2,4 9,10 16,4"/></svg>
+            Good to Know
+          </p>
+          <div class="info-rows">
+            <div class="irow"><span class="ikey">Dine in</span><span class="ival">Yes</span></div>
+            <div class="irow"><span class="ikey">Takeaway</span><span class="ival">Available daily</span></div>
+            <div class="irow"><span class="ikey">Parking</span><span class="ival">Street parking</span></div>
+            <div class="irow"><span class="ikey">Family friendly</span><span class="ival">Yes</span></div>
+            <div class="irow"><span class="ikey">Private events</span><span class="ival">On request</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER — ultra minimal ══ -->
+<footer>
+  <div class="footer-logo-wrap">
+    <a href="#home" class="footer-name">Coast &amp; Clay</a>
+    <span class="footer-sub">Ridge · Accra · Ghana</span>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-rule"></div>
+  <p class="footer-copy">© 2026 Coast &amp; Clay. All rights reserved. · Designed &amp; built by [Your Name]</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+  document.getElementById('hbg').addEventListener('click', () => document.getElementById('mob').classList.add('open'));
+  document.getElementById('mobClose').addEventListener('click', () => document.getElementById('mob').classList.remove('open'));
+  document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', () => document.getElementById('mob').classList.remove('open')));
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.dish').forEach(d => d.classList.toggle('show', d.dataset.cat === cat));
+    });
+  });
+
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
