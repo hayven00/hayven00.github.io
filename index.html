@@ -146,7 +146,7 @@
 
 			.bio-nickname {
 				color: #71717A;
-				font-size: 12.50px;
+				font-size: 12.25px;
 				font-family: 'Inter', sans-serif;
 				margin-bottom: 20px;
 				background-color: #E8E8E8;
@@ -293,7 +293,7 @@
         font-weight: 500;
         color: #71717A;
         margin-bottom: 30px;
-        max-width: 430px;
+        max-width: 600px;
       }
 
       .page-descrioption-1 {
@@ -341,7 +341,7 @@
 
 			.footer-text-indented {
 				margin-left: 15px;
-        		font-family: monospace;
+        font-family: monospace;
 			}
 
       .footer-site {
@@ -503,19 +503,20 @@
 	      <header class="navbar">
 
 	        <div>
-	          <img class="navbar-logo" src="project icons/okgr.svg" alt="">
+	          <img class="navbar-logo" src="/project icons/okgr.svg" alt="">
 	        </div>
 
 	        <nav class="navbar-links" aria-label="Main navigation">
 
-	          <a href="?page=home" data-page-link="home" class="nav-link nav-link-active">
-	            <img class="nav-icon" src="project icons/home.svg" alt=""> Home
+	          <a href="/" data-page-link="home" class="nav-link nav-link-active">
+	            <img class="nav-icon" src="/project icons/home.svg" alt=""> Home
 	          </a>
-	          <a href="?page=projects" data-page-link="projects" class="nav-link">
-	            <img class="nav-icon" src="project icons/projects.svg" alt=""> Projects
+	          <a href="/projects/" data-page-link="projects" class="nav-link">
+	            <img class="nav-icon" src="/project icons/projects.svg" alt=""> Projects
 	          </a>
-						<a href="?page=about" data-page-link="about" class="nav-link">
-							<img class="nav-icon" src="project icons/about.svg" alt=""> About
+
+						<a href="/about/" data-page-link="about" class="nav-link">
+							<img class="nav-icon" src="/project icons/about.svg" alt=""> About
 						</a>
 
           </nav>
@@ -525,53 +526,49 @@
 	        <!-- HOME PAGE -->
 	        <section id="home" class="page active">
 
-					<div class="hero">
+						<div class="hero">
 
-						<button class="hero-greeting-badge">Akwaaba</button>
-						<p class="hero-japanese-text">いらっしゃいませ</p>
+							<button class="hero-greeting-badge">Akwaaba</button>
+							<p class="hero-japanese-text">いらっしゃいませ</p>
 
-					</div>
+						</div>
 
-					<div class="bio">
+						<div class="bio">
 
-						<h1 class="bio-intro">It's me Kevin. I'm a creative trying everything and anything that spikes my interest. Code, Music, Writing?</h1>
-						<p class="bio-detail">On this site you'll find a few things i want you to know <span class="bio-highlight-green" onclick="showPage('about')" style="cursor:pointer;">about me 🙈</span> or <span class="bio-highlight-orange" onclick="showPage('projects')" style="cursor:pointer;">stuff i'm working on🎢</span> if you want to know more and keep up, try following my socials.</p>
-						<p class="bio-nickname"> <sup style="margin-right: 4px; font-size: 10px;">1</sup> You can also call me Kev.</p>
+							<h1 class="bio-intro">It's me Kevin. I'm a creative trying everything and anything that spikes my interest. Code, Music, Writing?</h1>
+							<p class="bio-detail">On this site you'll find a few things i want you to know <span class="bio-highlight-green" onclick="showPage('about')" style="cursor:pointer;">about me 🙈</span> or <span class="bio-highlight-orange" onclick="showPage('projects')" style="cursor:pointer;">stuff i'm working on🎢</span> if you want to know more and keep up, try following my socials.</p>
+						  <p class="bio-nickname"> <sup style="margin-right: 4px; font-size: 10px;">1</sup> You can also call me Kev.</p>
+						</div>
 
-					</div>
+						<div class="project-icon">
 
-					<div class="project-icon">
+							<img class="project-icon-base" src="/project icons/pg.svg" alt="">
+							<img class="project-icon-flag" src="/project icons/ghana.svg" alt="">
 
-						<img class="project-icon-base" src="project icons/pg.svg" alt="">
-						<img class="project-icon-flag" src="project icons/ghana.svg" alt="">
+						</div>
 
-					</div>
+						<div class="featured-label">
+							<img class="nav-icon" src="/project%20icons/featured.svg" alt=""> Featured
+						</div>
 
-					<div class="featured-label">
-						<img class="nav-icon" src="project%20icons/featured.svg" alt=""> Featured
-					</div>
+						<div class="featured-cards-row">
 
-	        <div class="featured-cards-row">
+							<div class="devlog-card">
+								<h2 class="devlog-card-little"><img class="devlog-icon" src="/project icons/youtube.png" alt="">Devlog</h2>
+								<p class="devlog-card-description">This is a Youtube channel I'll be sharing progress on stuff I'm working on. You'll also find some on code, etc. It's fun, check it out!</p>
+								<a class="devlog-card-link" href="https://www.youtube.com/@notkevwastaken" target="_blank" rel="noopener noreferrer">youtube.com/@notkevwastaken</a>
+							</div>
 
-	          <div class="devlog-card">
-	            <h2 class="devlog-card-little"><img class="devlog-icon" src="project icons/youtube.png" alt="">Devlog</h2>
-	            <p class="devlog-card-description">This is a Youtube channel I'll be sharing progress on stuff I'm working on. You'll also find some on code, etc. It's fun, check it out!</p>
-	            <a class="devlog-card-link" href="https://www.youtube.com/@notkevwastaken" target="_blank" rel="noopener noreferrer">youtube.com/@notkevwastaken</a>
-	          </div>
+						</div>
 
-	        </div>
-
-	        <section class="skills-card" aria-labelledby="skills-heading">
-	          <h2 id="skills-heading" class="skills-card-title">Skills &amp; Learning Path</h2>
-	          <p class="skills-card-description">
-	           I build clean, modern websites for real businesses using <span class="html">HTML</span>, <span class="css">CSS</span>  and <span class="javascript">JavaScript</span>.
-						 I've designed and shipped multi-page websites for a salon and a restaurant — handling everything from layout and responsiveness to booking forms and email integration. 
-						 I manage my code with Git and GitHub and deploy live sites on GitHub Pages. I'm currently deepening my JavaScript skills and working toward React and mobile app development."
-
-	          </p>
-	        </section>
-
-	      
+						<section class="skills-card" aria-labelledby="skills-heading">
+							<h2 id="skills-heading" class="skills-card-title">Skills &amp; Learning Path</h2>
+							<p class="skills-card-description">
+							I build clean, modern websites for real businesses using <span class="html">HTML</span>, <span class="css">CSS</span>  and <span class="javascript">JavaScript</span>.
+							I've designed and shipped multi-page websites for a salon and a restaurant — handling everything from layout and responsiveness to booking forms and email integration. 
+							I manage my code with Git and GitHub and deploy live sites on GitHub Pages. I'm currently deepening my JavaScript skills and working toward React and mobile app development."
+							</p>
+						</section>
 
 	        </section>
 
@@ -579,39 +576,39 @@
 	        <section id="projects" class="page">
 	        <h1 class="page-title">Projects</h1>
 	        <p class="page-subtitle">I've tried many and a lot of things. These are the ones I could collect and showcase; or just proud of them.</p>
-	        <p class="placeholder-text"> <img class="placeholder-logo" src="project icons/globe.svg" alt="">WEBSITES</p>
+	        <p class="placeholder-text"> <img class="placeholder-logo" src="/project icons/globe.svg" alt="">WEBSITES</p>
 					
 					<div class="coast-and-clay">
-					<P class="coast-and-clay-title">Coast & Clay <a class="coast-and-clay-site" href="https://hayven00.github.io/coastandclay.github.io/" target="_blank" rel="noopener noreferrer"> <img class="coast-and-clay-site-logo" src="project icons/globe.png" alt=""> coastandclay.github.io</a></P>
-					<p class="coast-and-clay-description">A conceptual restaurant website i designed for a contemporary Ghanaian dining brand in Accra, focused on branding and user experience inspired by local cuisine and culture.</p>
+						<P class="coast-and-clay-title">Coast & Clay <a class="coast-and-clay-site" href="https://hayven00.github.io/coastandclay.github.io/" target="_blank" rel="noopener noreferrer"> <img class="coast-and-clay-site-logo" src="/project icons/globe.png" alt=""> coastandclay.github.io</a></P>
+						<p class="coast-and-clay-description">A conceptual restaurant website i designed for a contemporary Ghanaian dining brand in Accra, focused on branding and user experience inspired by local cuisine and culture.</p>
 					</div>
 
 					<div class="polished-by-her">
-					<P class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="https://hayven00.github.io/polishedbyher.github.io/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="project icons/globe.png" alt=""> polishedbyher.github.io</a></P>
-					<p class="polished-by-her-description">A conceptual salon website I designed for a nail and hair brand centered around the everyday woman — clean, intentional, and built for those who treat self-care as a non-negotiable.</p>
+						<P class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="https://hayven00.github.io/polishedbyher.github.io/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="/project icons/globe.png" alt=""> polishedbyher.github.io</a></P>
+						<p class="polished-by-her-description">A conceptual salon website I designed for a nail and hair brand centered around the everyday woman — clean, intentional, and built for those who treat self-care as a non-negotiable.</p>
 					</div>
 
 					<div class="project-page-images">
 						<div>
-							<img class="coast-and-clay-ss" src="project icons/coastandclay.png" alt="">
+							<img class="coast-and-clay-ss" src="/project icons/coastandclay.png" alt="">
 							<p class="coast-and-clay-ss-caption">Screenshot of Coast & Clay homepage</p>
 						</div>
 						
 						<div>
-							<img class="polished-by-her-ss" src="project icons/pbh.png" alt="">
+							<img class="polished-by-her-ss" src="/project icons/pbh.png" alt="">
 							<p class="polished-by-her-ss-caption">Screenshot of Polished By Her homepage</p>
 						</div>
 					</div>
 	        </section>
 					
-
 	        <!-- ABOUT PAGE -->
 	        <section id="about" class="page">
-	        <h1 class="about-page-title">Kevin Frimpong</h1>
-	        <p class="about-page-subtitle">Super creative🏄🏽‍♂️</p>
-          <p class="page-descrioption-1">Born in Ghana. A small country in West Africa, I've seen, done and felt a lot of things that have shaped me up for one purpose: <span style="font-weight: 700;">"Inspire 🔥"</span>.</p>
-          <p class="page-description-2">I'm passionate about creating innovative solutions and bringing ideas to life through <span style="font-weight: 500;">code</span>  and <span style="font-weight: 500;">design</span>.</p>
-	        </section>
+						<h1 class="about-page-title">Kevin Frimpong</h1>
+						<p class="about-page-subtitle">Super creative🏄🏽‍♂️</p>
+						<p class="page-descrioption-1">Born in Ghana. A small country in West Africa, I've seen, done and felt a lot of things that have shaped me up for one purpose: <span style="font-weight: 700;">"Inspire 🔥"</span>.</p>
+						<p class="page-description-2">I'm passionate about creating innovative solutions and bringing ideas to life through <span style="font-weight: 500;">code</span>  and <span style="font-weight: 500;">design</span>.</p>
+					</section>
+					
 	      </main>
 
 	      <footer class="site-footer">
@@ -623,17 +620,35 @@
             <p class="footer-text footer-text-indented">Source code: <a href="https://github.com/hayven00/hayven00.github.io" target="_blank" rel="noopener noreferrer"> <span class="footer-site">gh/hayven/hayven00.github.io</span></a></p>
 	        </div>
 
-	        <img class="footer-logo" src="project%20icons/okgr.svg" alt="">
+	        <img class="footer-logo" src="/project%20icons/okgr.svg" alt="">
 
 	      </footer>
 
 	     <script>
 	       const pages = ['home', 'projects', 'about'];
+	       const pagePaths = {
+	        home: '/',
+	        projects: '/projects/',
+	        about: '/about/',
+	       };
 	       const favicons = {
 	        home: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
 	        projects: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%2354B562'/></svg>",
 	        about: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23F5C518'/></svg>",
 	       };
+
+	       function getPageFromLocation() {
+	        const params = new URLSearchParams(window.location.search);
+	        const legacyPage = params.get('page');
+
+	        if (pages.includes(legacyPage)) {
+	          history.replaceState(null, '', pagePaths[legacyPage]);
+	          return legacyPage;
+	        }
+
+	        const pathPage = window.location.pathname.split('/').filter(Boolean)[0];
+	        return pages.includes(pathPage) ? pathPage : 'home';
+	       }
 
 	       function showPage(id, shouldPushState = true) {
 	        const pageId = pages.includes(id) ? id : 'home';
@@ -649,7 +664,7 @@
 	        }
 
 	        if (shouldPushState) {
-	          history.pushState(null, '', '?page=' + pageId);
+	          history.pushState(null, '', pagePaths[pageId]);
 	        }
 
 	        window.scrollTo(0, 0);
@@ -657,8 +672,14 @@
 	       }
 
 	        history.scrollRestoration = 'manual';
-	        const params = new URLSearchParams(window.location.search);
-	        showPage(params.get('page') || 'home', false);
+	        const routedPath = sessionStorage.getItem('hayvenRoutePath');
+
+	        if (routedPath) {
+	          sessionStorage.removeItem('hayvenRoutePath');
+	          history.replaceState(null, '', routedPath);
+	        }
+
+	        showPage(getPageFromLocation(), false);
 
 	        document.querySelectorAll('[data-page-link]').forEach(link => {
 	          link.addEventListener('click', event => {
@@ -668,8 +689,7 @@
 	        });
 
 	        window.addEventListener('popstate', () => {
-	          const nextParams = new URLSearchParams(window.location.search);
-	          showPage(nextParams.get('page') || 'home', false);
+	          showPage(getPageFromLocation(), false);
 	        });
 	      </script>
 
