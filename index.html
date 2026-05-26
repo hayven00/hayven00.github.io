@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<title>Hi 👋🏾, it's me Kevin</title>
+		<title>Hi 👋🏾, it's me Kevin</title>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://hayven.ink/">
-	<meta property="og:title" content="Hi 👋🏾, it's me Kevin">
-	<meta property="og:description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
-	<meta property="og:site_name" content="hayven.ink">
-	<meta property="og:image" content="https://hayven.ink/assets/social-preview.png">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="1200">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Hi 👋🏾, it's me Kevin">
-	<meta name="twitter:description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
-	<meta name="twitter:image" content="https://hayven.ink/assets/social-preview.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://hayven.ink/">
+		<meta property="og:title" content="Hi 👋🏾, it's me Kevin">
+		<meta property="og:description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
+		<meta property="og:site_name" content="hayven.ink">
+		<meta property="og:image" content="https://hayven.ink/assets/social-preview.png">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="1200">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Hi 👋🏾, it's me Kevin">
+		<meta name="twitter:description" content="Home of the Creative 🏄🏽‍♂️. Find my projects, skills and stuff I'm working on here.">
+		<meta name="twitter:image" content="https://hayven.ink/assets/social-preview.png">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,10 +45,28 @@
 				padding-bottom: 5px;
 			}
 
+			.navbar-brand {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 40px;
+				align-items: center;
+			}
+
+			.social-icons {			
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				background-color: #E5E8E8;
+				border: 1px solid #cdd0d5;
+				border-radius: 100px;
+				padding: 2px 10px;
+				margin-top: 10px;
+			}
+			
+
 			.navbar-logo {
 				margin-top: 10px;
 				width: 60px;
-				margin-bottom: 40px;
 			}
 
 			.navbar-links {
@@ -519,9 +537,26 @@
       <!-- HEADER (stays on every page) -->
 	      <header class="navbar">
 
-	        <div>
+	        <div class="navbar-brand">
 	          <img class="navbar-logo" src="/assets/icons/okgr.svg" alt="">
+
+						<div class="social-icons">
+
+							<a href="mailto:mail@hayven.ink" rel="noopener noreferrer">
+								<img src="/assets/icons/mail.svg" alt="">
+							</a>
+							<a href="https://x.com/hayvn00" target="_blank" rel="noopener noreferrer">
+								<img src="/assets/icons/twitter.svg" alt="">
+							</a>
+							<a href="https://github.com/hayven00" target="_blank" rel="noopener noreferrer">
+								<img src="/assets/icons/github.svg" alt="">
+							</a>
+							
+						</div>
+
 	        </div>
+
+
 
 	        <nav class="navbar-links" aria-label="Main navigation">
 
@@ -545,7 +580,7 @@
 
 						<div class="hero">
 
-							<button class="hero-greeting-badge">Akwaaba</button>
+							<span class="hero-greeting-badge">Akwaaba</span>
 							<p class="hero-japanese-text">いらっしゃいませ</p>
 
 						</div>
@@ -601,7 +636,7 @@
 					</div>
 
 					<div class="polished-by-her">
-						<P class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="/projects/salon/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="/assets/icons/globe.png" alt="">polishedbyher.ink</a></P>
+						<p class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="/projects/salon/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="/assets/icons/globe.png" alt="">polishedbyher.ink</a></p>
 						<p class="polished-by-her-description">A conceptual salon website I designed for a nail and hair brand centered around the everyday woman — clean, intentional, and built for those who treat self-care as a non-negotiable.</p>
 					</div>
 
@@ -622,7 +657,7 @@
 	        <section id="about" class="page">
 						<h1 class="about-page-title">Kevin Frimpong</h1>
 						<p class="about-page-subtitle">Super creative🏄🏽‍♂️</p>
-						<p class="page-descrioption-1">Born in Ghana. A small country in West Africa, I've seen, done and felt a lot of things that have shaped me up for one purpose: <span style="font-weight: 700;">"Inspire 🔥"</span>.</p>
+						<p class="page-description-1">Born in Ghana. A small country in West Africa, I've seen, done and felt a lot of things that have shaped me up for one purpose: <span style="font-weight: 700;">"Inspire 🔥"</span>.</p>
 						<p class="page-description-2">I'm passionate about creating innovative solutions and bringing ideas to life through <span style="font-weight: 500;">code</span>  and <span style="font-weight: 500;">design</span>.</p>
 					</section>
 					
