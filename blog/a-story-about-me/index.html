@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A story about me | Kev</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A story about me — Kevin Frimpong.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hayven.ink/blog/a-story-about-me/">
+    <meta property="og:title" content="A story about me | Kev">
+    <meta property="og:description" content="A story about me — Kevin Frimpong.">
+    <meta property="og:site_name" content="hayven.ink">
+    <meta property="og:image" content="https://hayven.ink/assets/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A story about me | Kev">
+    <meta name="twitter:description" content="A story about me — Kevin Frimpong.">
+    <meta name="twitter:image" content="https://hayven.ink/assets/social-preview.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background-color: rgb(244, 244, 245);
+        color: #27272A;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .page-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      @media (max-width: 600px) {
+        .page-wrapper { padding: 0 16px; }
+      }
+
+      /* NAVBAR */
+
+      .nav-link-active {
+        background-color: #E8E8E8;
+        border: 1px solid #E0E0E0;
+      }
+
+      .navbar {
+        width: 100%;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: rgb(244, 244, 245);
+        padding-right: 10px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+      }
+
+      .navbar-brand {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .navbar-logo { width: 60px; }
+
+      .social-icons {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #E5E8E8;
+        border: 1px solid #cdd0d5;
+        border-radius: 100px;
+        padding: 2px 8px;
+      }
+
+      .social-icons a { display: flex; align-items: center; }
+
+      .navbar-links { display: flex; }
+
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #27272A;
+        font-size: 14px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+      }
+
+      .nav-link:hover {
+        background-color: #E8E8E8;
+      }
+
+      .nav-icon {
+        width: 16px;
+        height: 16px;
+        filter: brightness(0) saturate(100%) invert(40%);
+      }
+
+      /* POST */
+
+
+      .post-wrapper {
+        max-width: 620px;
+        padding-bottom: 100px;
+      }
+
+      .post-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #27272A;
+        line-height: 1.4;
+        margin-top: 100px;
+        margin-bottom: 8px;
+      }
+
+      .post-date {
+        font-family: monospace;
+        font-size: 12.25px;
+        background-color: #E8E8E8;
+				display: inline-block;
+				padding: 0px 10px;
+				border-radius: 20px;
+        padding: 2px px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: #71717A;
+        margin-bottom: 40px;
+      }
+
+      .post-body {
+        font-size: 14px;
+        font-weight: 400;
+        color: #3F3F46;
+        line-height: 1.9;
+      }
+
+      .post-body p { margin-bottom: 22px; font-family: 'Inter', sans-serif; font-weight: 500; }
+      .post-body p:last-child { margin-bottom: 0; }
+
+      /* FOOTER */
+      .site-footer {
+        font-family: monospace;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 120px;
+        margin-bottom: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #E0E0E0;
+      }
+
+      .footer-text {
+        font-size: 12.25px;
+        color: #71717A;
+        margin: 0 0 4px 0;
+      }
+
+      .footer-text-indented { margin-left: 15px; }
+
+      .footer-site {
+        color: #71717A;
+        text-decoration: underline;
+        text-decoration-color: #71717A;
+      }
+
+      .footer-version-year {
+        color: #16A34A;
+        background-color: #4ADE801A;
+      }
+
+      .footer-logo { width: 60px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+
+      <!-- NAVBAR -->
+      <header class="navbar">
+        <div class="navbar-brand">
+          <a href="/"><img class="navbar-logo" src="/assets/icons/okgr.svg" alt=""></a>
+
+          <div class="social-icons">
+            <a href="mailto:mail@hayven.ink" rel="noopener noreferrer" style="display: flex; align-items: center;">
+              <img src="/assets/icons/mail.svg" alt="" style="width: 15px; height: 15px; filter: brightness(0) saturate(100%) invert(40%);">
+            </a>
+            <a href="https://x.com/hayvn00" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center;">
+              <img src="/assets/icons/twitter.svg" alt="" style="width: 15px; height: 15px; filter: brightness(0) saturate(100%) invert(40%);">
+            </a>
+            <a href="https://github.com/hayven00" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center;">
+              <img src="/assets/icons/github.svg" alt="" style="width: 15px; height: 15px; filter: brightness(0) saturate(100%) invert(40%);">
+            </a>
+          </div>
+        </div>
+
+        <nav class="navbar-links" aria-label="Main navigation">
+          <a href="/" class="nav-link">
+            <img class="nav-icon" src="/assets/icons/home.svg" alt=""> Home
+          </a>
+          <a href="/projects/" class="nav-link">
+            <img class="nav-icon" src="/assets/icons/projects.svg" alt=""> Projects
+          </a>
+
+          <a href="/#blog" class="nav-link nav-link-active" style="position: relative;">
+            Blog
+            <span style="position: absolute; top: -2px; right: -2px; width: 7px; height: 7px; background-color: #F97316; border-radius: 50%; display: inline-block;"></span>
+          </a>
+          <a href="/about/" class="nav-link">
+            <img class="nav-icon" src="/assets/icons/about.svg" alt=""> About
+          </a>
+        </nav>
+      </header>
+
+      <!-- POST -->
+      <main>
+        <article class="post-wrapper">
+          <h1 class="post-title">A story about me.</h1>
+          <p class="post-date">27th May 2026</p>
+
+          <div class="post-body">
+            <p>I was born and raised in Ghana, a small country on the west coast of Africa. Growing up here was both hard and easy at the same time — a lot of that had to do with the kind of parents I have and how I was brought up. But honestly, <span style="background-color: #FFEDD5; color: #F97316; padding: 3.5px; border-radius: 20px;">most of the hard parts I brought onto myself.</span> And I don't regret any of it...</p>
+            <p>I've always known about coding in some way, but I found a real passion for it about two years ago. It was introduced to me properly by one of the greatest people I've come across in my years at university — De-Great Yartey. A young man who is incredibly intelligent, an overall genius, and someone I genuinely look up to.</p>
+
+            <p>I've always had a passion for anything that involved computers. I was fascinated by people who could touch type — typing fast without ever looking at the keyboard. It always felt like some kind of superpower to me.</p>
+
+            <p>De-Great helped me get started. But back then my laptop wasn't good enough, so I used to borrow a friend's which was much faster and better than mine. We had a falling out over something and he stopped letting me use it — which completely halted my progress for months. Then I got my own PC, started all over again, and here I am.</p>
+
+            <blockquote style="border-left: 3px solid #27272A; margin: 30px 0; padding: 4px 16px;">
+              <p style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: #27272A; line-height: 1.5;">"My goal is simple — to be great."</p>
+            </blockquote>
+            
+            <p>Hayven is where all of that leads. My goal is simple — to be great. To become a creative and a genius in my own right, just like the person who inspired me to start. I'm not just building websites. I'm building something that reflects everything I've been through and everything I'm working towards.</p>
+          </div>
+        </article>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div>
+          <p class="footer-text">&#169; 2026 Kevin. All rights reserved.</p>
+          <p class="footer-text footer-text-indented">version <span class="footer-version-year">2026</span>.5.27.1</p>
+          <p class="footer-text footer-text-indented">Github Pages</p>
+          <p class="footer-text footer-text-indented">Source code:
+            <a href="https://github.com/hayven00/hayven00.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="footer-site">gh/hayven/hayven00.github.io</span>
+            </a>
+          </p>
+        </div>
+        <img class="footer-logo" src="/assets/icons/okgr.svg" alt="Hayven logo">
+      </footer>
+
+    </div>
+  </body>
+</html>

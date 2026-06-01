@@ -24,6 +24,47 @@
 
     <style>
 
+			.page {
+				animation: fadeIn 0.25s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from { opacity: 0; }
+				to   { opacity: 1; }
+			}
+
+				.post-title {
+				font-family: 'Inter', sans-serif;
+				font-size: 20px;
+				font-weight: 700;
+				color: #27272A;
+				line-height: 1.4;
+				margin-top: 100px;
+				margin-bottom: 8px;
+				max-width: 620px;
+			}
+
+			.post-date {
+				font-family: 'Inter', sans-serif;
+				font-size: 12.25px;
+				font-weight: 500;
+				color: #71717A;
+				margin-bottom: 40px;
+			}
+
+			.post-body {
+				font-family: 'Inter', sans-serif;
+				font-size: 14px;
+				font-weight: 400;
+				color: #3F3F46;
+				line-height: 1.9;
+				max-width: 620px;
+			}
+
+			.post-body p {
+				margin-bottom: 22px;
+			}
+
 			.page-wrapper {
 				max-width: 900px;
 				margin: 0 auto;
@@ -293,7 +334,7 @@
 				box-shadow: 0 0 5px rgba(0,0,0,0.25);
 				border-radius: 4px;
 				margin-top: 0;
-				margin-bottom: 16px;
+				margin-bottom: 40px;
 				gap: 5px;
 			}
 
@@ -308,6 +349,55 @@
 				font-size: 14px;
 				color: #71717A;
 				margin-top: 5px;
+			}
+
+			.recent-post-title-text {
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				font-family: 'Inter', sans-serif;
+				font-weight: bold;
+				font-size: 14px;
+			}
+
+			.recent-post-icon {
+				width: 14px;
+				height: 14px;
+			}
+
+			.blog-list {
+				font-family: 'Inter', sans-serif;
+				font-size: 14px;
+				padding: 0px 7px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				color: #71717A;
+				border-bottom: 1px solid #E0E0E0;
+				border-bottom-width: 1px;
+			}
+
+			.blog-list:hover {
+				background-color: #E8E8E8;
+				transition: background-color 0.2s ease-in-out;
+			}
+
+			.home-blog-list {
+				font-family: 'Inter', sans-serif;
+				font-size: 14px;
+				padding: 0px 7px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				color: #71717A;
+				border-bottom: 1px solid #E0E0E0;
+				border-bottom-width: 1px;
+				max-width: 550px;
+			}
+
+			.home-blog-list:hover {
+				background-color: #E8E8E8;
+				transition: background-color 0.2s ease-in-out;
 			}
 
 			/* ── OTHER PAGES ── */
@@ -545,6 +635,26 @@
 				margin-left: 10px;
 			}
 
+			.blog-page-title {
+				font-family: 'Inter', sans-serif;
+				font-weight: 700;
+				font-size: 14px;
+				margin-top: 100px;
+				margin-bottom: 10px;
+			}
+
+			.blog-page-subtitle {
+				font-family: 'Inter', sans-serif;
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 20px;
+				color: #71717A;
+				margin-top: 10px;
+				margin-bottom: 5px;
+				max-width: 510px;
+			}
+
+
 	  </style>
   </head>
 
@@ -563,9 +673,11 @@
 							<a href="mailto:mail@hayven.ink" rel="noopener noreferrer" style="display: flex; align-items: center;">
 								<img src="/assets/icons/mail.svg" alt="" style="width: 15px; height: 15px; filter: brightness(0) saturate(100%) invert(40%);">
 							</a>
+
 							<a href="https://x.com/hayvn00" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center;">
 								<img src="/assets/icons/twitter.svg" alt="" style="width: 15px; height: 15px;  filter: brightness(0) saturate(100%) invert(40%);">
 							</a>
+
 							<a href="https://github.com/hayven00" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center;">
 								<img src="/assets/icons/github.svg" alt="" style="width: 15px; height: 15px; filter: brightness(0) saturate(100%) invert(40%);">
 							</a>
@@ -574,8 +686,6 @@
 
 	        </div>
 
-
-
 	        <nav class="navbar-links" aria-label="Main navigation">
 
 	          <a href="/" data-page-link="home" class="nav-link nav-link-active">
@@ -583,7 +693,21 @@
 	          </a>
 	          <a href="/projects/" data-page-link="projects" class="nav-link">
 	            <img class="nav-icon" src="/assets/icons/projects.svg" alt=""> Projects
-	          </a>
+						</a>
+
+						<a href="/blog/" data-page-link="blog" class="nav-link" style="position: relative;">
+							Blog
+							<span style="
+								position: absolute;
+								top: -2px;
+								right: -2px;
+								width: 7px;
+								height: 7px;
+								background-color: #F97316;
+								border-radius: 50%;
+								display: inline-block;
+							"></span>
+						</a>
 
 						<a href="/about/" data-page-link="about" class="nav-link">
 							<img class="nav-icon" src="/assets/icons/about.svg" alt=""> About
@@ -640,38 +764,98 @@
 							</p>
 						</section>
 
+						<div style="display: flex; align-items: center;">
+							<p class="recent-post-title-text"> <img class="recent-post-icon" src="assets/icons/recent.png" alt=""> Recent posts</p>
+						</div>
 
-	        </section>
+
+						<a href="/blog/a-story-about-me/" style="text-decoration: none;">
+							<div class="home-blog-list">
+								<p style="color: #27272A; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;">A story about me.</p>
+								<p style="color: #71717A; font-family: 'Inter', sans-serif; font-size: 12.25px; font-weight: 500;">27th May 2026</p>
+							</div>
+						</a>
+
+						<a href="/blog/second-post/" style="text-decoration: none;">
+							<div class="home-blog-list">
+								<p style="color: #27272A; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;">Building Hayven from scratch.</p>
+								<p style="color: #71717A; font-family: 'Inter', sans-serif; font-size: 12.25px; font-weight: 500;">1st June 2026</p>
+							</div>
+						</a>
+					
+					</section>
 
 	        <!-- PROJECTS PAGE -->
 	        <section id="projects" class="page">
-	        <h1 class="page-title">Projects</h1>
-	        <p class="page-subtitle">I've tried many and a lot of things. These are the ones I could collect and showcase; or just proud of them.</p>
-	        <p class="placeholder-text"> <img class="placeholder-logo" src="/assets/icons/globe.svg" alt="">WEBSITES</p>
-					
-					<div class="coast-and-clay">
-						<P class="coast-and-clay-title">Coast & Clay <a class="coast-and-clay-site" href="/projects/restaurant/" target="_blank" rel="noopener noreferrer"> <img class="coast-and-clay-site-logo" src="/assets/icons/globe.png" alt=""> coastandclay.ink</a></P>
-						<p class="coast-and-clay-description">A conceptual restaurant website i designed for a contemporary Ghanaian dining brand in Accra, focused on branding and user experience inspired by local cuisine and culture.</p>
-					</div>
-
-					<div class="polished-by-her">
-						<p class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="/projects/salon/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="/assets/icons/globe.png" alt=""> polishedbyher.ink</a></p>
-						<p class="polished-by-her-description">A conceptual salon website I designed for a nail and hair brand centered around the everyday woman — clean, intentional, and built for those who treat self-care as a non-negotiable.</p>
-					</div>
-
-					<div class="project-page-images">
-						<div>
-							<img class="coast-and-clay-ss" src="/assets/images/coastandclay.png" alt="">
-							<p class="coast-and-clay-ss-caption">Screenshot of Coast & Clay homepage</p>
-						</div>
+						<h1 class="page-title">Projects</h1>
+						<p class="page-subtitle">I've tried many and a lot of things. These are the ones I could collect and showcase; or just proud of them.</p>
+						<p class="placeholder-text"> <img class="placeholder-logo" src="/assets/icons/globe.svg" alt="">WEBSITES</p>
 						
-						<div>
-							<img class="polished-by-her-ss" src="/assets/images/pbh.png" alt="">
-							<p class="polished-by-her-ss-caption">Screenshot of Polished By Her homepage</p>
+						<div class="coast-and-clay">
+							<P class="coast-and-clay-title">Coast & Clay <a class="coast-and-clay-site" href="/projects/restaurant/" target="_blank" rel="noopener noreferrer"> <img class="coast-and-clay-site-logo" src="/assets/icons/globe.png" alt=""> coastandclay.ink</a></P>
+							<p class="coast-and-clay-description">A conceptual restaurant website i designed for a contemporary Ghanaian dining brand in Accra, focused on branding and user experience inspired by local cuisine and culture.</p>
 						</div>
-					</div>
+
+						<div class="polished-by-her">
+							<p class="polished-by-her-title">PolishedByHer <a class="polished-by-her-site" href="/projects/salon/" target="_blank" rel="noopener noreferrer"> <img class="polished-by-her-site-logo" src="/assets/icons/globe.png" alt=""> polishedbyher.ink</a></p>
+							<p class="polished-by-her-description">A conceptual salon website I designed for a nail and hair brand centered around the everyday woman — clean, intentional, and built for those who treat self-care as a non-negotiable.</p>
+						</div>
+
+						<div class="project-page-images">
+							<div>
+								<img class="coast-and-clay-ss" src="/assets/images/coastandclay.png" alt="">
+								<p class="coast-and-clay-ss-caption">Screenshot of Coast & Clay homepage</p>
+							</div>
+							
+							<div>
+								<img class="polished-by-her-ss" src="/assets/images/pbh.png" alt="">
+								<p class="polished-by-her-ss-caption">Screenshot of Polished By Her homepage</p>
+							</div>
+						</div>
 	        </section>
-					
+
+					<!-- BLOG PAGE -->
+					<section id="blog" class="page">
+
+						<!-- Blog list view -->
+						<div id="blog-list-view">
+							<h1 class="blog-page-title">2 posts published</h1>
+							<p class="blog-page-subtitle">I don't say or do something thinking that whatever it is will immediately have an effect on you or the world. 
+								I do everything thinking that a lot of the ideas we have are just manifestations of seeds planted by the many people 
+								we've met and &mdash; experiences we've had before but have totally forgotten where from — and my writings will be one of those.
+							</p>
+							<p class="blog-page-subtitle" style="margin-top: 0px; margin-bottom: 50px;">
+								These are my own words. Shaped by my own experiences. 
+								If you find something confusing, wrong or misleading, please let me know. 
+								If you find anything helpful, please consider sharing to your friends and family.
+							</p>
+
+							<!-- Blog list links go here -->
+							<a href="/blog/a-story-about-me/" style="text-decoration: none;">
+								<div class="blog-list">
+									<p style="color: #27272A; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;">A story about me.</p>
+									<p style="color: #71717A; font-family: 'Inter', sans-serif; font-size: 12.25px; font-weight: 500;">27th May 2026</p>
+								</div>
+							</a>
+
+							<a href="/blog/second-post/" style="text-decoration: none;">
+								<div class="blog-list">
+									<p style="color: #27272A; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;">Building Hayven from scratch.</p>
+									<p style="color: #71717A; font-family: 'Inter', sans-serif; font-size: 12.25px; font-weight: 500;">1st June 2026</p>
+								</div>
+							</a>
+						</div>
+
+						 <!-- Blog post view (hidden by default) -->
+							<div id="blog-post-view" style="display: none;">
+								<h1 class="post-title" id="post-title-text"></h1>
+								<p class="post-date" id="post-date-text"></p>
+								<div class="post-body" id="post-body-text"></div>
+							</div>
+
+					</section>
+
+
 	        <!-- ABOUT PAGE -->
 	        <section id="about" class="page">
 						<h1 class="about-page-title">Kevin Frimpong</h1>
@@ -679,12 +863,11 @@
 						<p class="page-description-1">Born in Ghana. A small country in West Africa, I've seen, done and felt a lot of things that have shaped me up for one purpose: <span style="font-weight: 700;">"Inspire 🔥"</span>.</p>
 						<p class="page-description-2">I'm passionate about creating innovative solutions and bringing ideas to life through <span style="font-weight: 500;">code</span>  and <span style="font-weight: 500;">design</span>.</p>
 
-				        <p style="max-width: 550px; margin-top: 20px; color: #71717A; font-family: 'Inter', sans-serif; font-size: 14px; margin: 0;">
+						<p style="max-width: 550px; margin-top: 20px; color: #71717A; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; margin: 0;">
 							I'll show forth my lamp 🪔 unto the world, that ye that may see shall find a path forward.
 						</p>
-						<p style="font-weight: 500; font-family: 'Courier New', Courier, monospace; color: #71717A; margin: 0;">
-							&mdash; De-Great, said that
-						</p>
+						<p style="font-weight: 500; font-family: 'Courier New', Courier, monospace; color: #71717A; margin: 0;">&mdash; De-Great, said that</p>
+
 					</section>
 					
 	      </main>
@@ -703,72 +886,124 @@
 	      </footer>
 
 	     <script>
-	       const pages = ['home', 'projects', 'about'];
-	       const pagePaths = {
-	        home: '/',
-	        projects: '/projects/',
-	        about: '/about/',
-	       };
-	       const favicons = {
-	        home: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
-	        projects: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%2354B562'/></svg>",
-	        about: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23F5C518'/></svg>",
-	       };
+	        const pages = ['home', 'projects', 'blog', 'about'];
 
-	       function getPageFromLocation() {
-	        const params = new URLSearchParams(window.location.search);
-	        const legacyPage = params.get('page');
+					const pagePaths = {
+						home: '/',
+						projects: '/projects/',
+						blog: '/blog/',
+						about: '/about/',
+					};
 
-	        if (pages.includes(legacyPage)) {
-	          history.replaceState(null, '', pagePaths[legacyPage]);
-	          return legacyPage;
-	        }
+					const favicons = {
+						home: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
+						projects: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
+						blog: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
+						about: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23FF7F50'/></svg>",
+					};
 
-	        const pathPage = window.location.pathname.split('/').filter(Boolean)[0];
-	        return pages.includes(pathPage) ? pathPage : 'home';
-	       }
+					const posts = {
+						'a-story-about-me': {
+							title: 'A story about me.',
+							date: '27th May 2026',
+							body: `<p>Your story here...</p>`
+						},
+						'second-post': {
+							title: 'Second post.',
+							date: '1st June 2026',
+							body: `<p>Your second post content here...</p>`
+						}
+					};
 
-	       function showPage(id, shouldPushState = true) {
-	        const pageId = pages.includes(id) ? id : 'home';
-	        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-	        document.querySelectorAll('[data-page-link]').forEach(a => a.classList.remove('nav-link-active'));
-	        document.getElementById(pageId).classList.add('active');
-	        document.querySelector(`[data-page-link="${pageId}"]`).classList.add('nav-link-active');
+					function showBlogList() {
+						const listView = document.getElementById('blog-list-view');
+						const postView = document.getElementById('blog-post-view');
+						if (listView) listView.style.display = 'block';
+						if (postView) postView.style.display = 'none';
+						window.scrollTo(0, 0);
+					}
 
-	        if (pageId === 'home') {
-	          document.title = 'Hi 👋🏾, it\'s me Kevin';
-	        } else {
-	          document.title = pageId.charAt(0).toUpperCase() + pageId.slice(1) + ' | Kev';
-	        }
+					function showPost(slug) {
+						const post = posts[slug];
+						if (!post) return;
+						document.getElementById('post-title-text').textContent = post.title;
+						document.getElementById('post-date-text').textContent = post.date;
+						document.getElementById('post-body-text').innerHTML = post.body;
+						document.getElementById('blog-list-view').style.display = 'none';
+						document.getElementById('blog-post-view').style.display = 'block';
+						history.pushState({ view: 'post', slug }, '', '/blog/' + slug + '/');
+						window.scrollTo(0, 0);
+					}
 
-	        if (shouldPushState) {
-	          history.pushState(null, '', pagePaths[pageId]);
-	        }
+					function getPageFromLocation() {
+						const params = new URLSearchParams(window.location.search);
+						const legacyPage = params.get('page');
 
-	        window.scrollTo(0, 0);
-	        document.querySelector('link[rel="icon"]').href = favicons[pageId];
-	       }
+						if (pages.includes(legacyPage)) {
+							history.replaceState(null, '', pagePaths[legacyPage]);
+							return legacyPage;
+						}
 
-	        history.scrollRestoration = 'manual';
-	        const routedPath = sessionStorage.getItem('hayvenRoutePath');
+						const pathPage = window.location.pathname.split('/').filter(Boolean)[0];
+						return pages.includes(pathPage) ? pathPage : 'home';
+					}
 
-	        if (routedPath) {
-	          sessionStorage.removeItem('hayvenRoutePath');
-	          history.replaceState(null, '', routedPath);
-	        }
+					function showPage(id, shouldPushState = true) {
+						const pageId = pages.includes(id) ? id : 'home';
 
-	        showPage(getPageFromLocation(), false);
+						document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+						document.querySelectorAll('[data-page-link]').forEach(a => a.classList.remove('nav-link-active'));
+						document.getElementById(pageId).classList.add('active');
 
-	        document.querySelectorAll('[data-page-link]').forEach(link => {
-	          link.addEventListener('click', event => {
-	            event.preventDefault();
-	            showPage(link.dataset.pageLink);
-	          });
-	        });
+						const activeNavLink = document.querySelector(`[data-page-link="${pageId}"]`);
+						if (activeNavLink) activeNavLink.classList.add('nav-link-active');
 
-	        window.addEventListener('popstate', () => {
-	          showPage(getPageFromLocation(), false);
-	        });
+						if (pageId === 'home') {
+							document.title = 'Hi 👋🏾, it\'s me Kevin';
+						} else {
+							document.title = pageId.charAt(0).toUpperCase() + pageId.slice(1) + ' | Kev';
+						}
+
+						if (shouldPushState) {
+							history.pushState(null, '', pagePaths[pageId]);
+						}
+
+						// Always reset blog to list view when navigating
+						showBlogList();
+
+						window.scrollTo(0, 0);
+						document.querySelector('link[rel="icon"]').href = favicons[pageId];
+					}
+
+					history.scrollRestoration = 'manual';
+					const routedPath = sessionStorage.getItem('hayvenRoutePath');
+
+					if (routedPath) {
+						sessionStorage.removeItem('hayvenRoutePath');
+						history.replaceState(null, '', routedPath);
+					}
+
+					showPage(getPageFromLocation(), false);
+					if (window.location.hash === '#blog') {
+						showPage('blog', false);
+						history.replaceState(null, '', '/blog/');
+					}
+
+					document.querySelectorAll('[data-page-link]').forEach(link => {
+						link.addEventListener('click', event => {
+							event.preventDefault();
+							showPage(link.dataset.pageLink);
+						});
+					});
+
+					window.addEventListener('popstate', (event) => {
+						if (event.state && event.state.view === 'post') {
+							showPost(event.state.slug);
+						} else {
+							showBlogList();
+							showPage(getPageFromLocation(), false);
+						}
+					});
 	      </script>
 
     </div>
