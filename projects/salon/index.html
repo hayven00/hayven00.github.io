@@ -548,7 +548,7 @@
               <span class="send-btn-icon">💬</span>
               <div>
                 <div class="send-btn-label">Send via WhatsApp</div>
-                <div class="send-btn-sub">024 068 3934</div>
+                <div class="send-btn-sub">0244 126 397</div>
               </div>
             </button>
           </div>
@@ -674,7 +674,7 @@
   function sendWhatsApp() {
     const msg = encodeURIComponent(buildMessage());
     // Ghana country code +233, remove leading 0
-    const number = '233240683934';
+    const number = '233244126397';
     window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
     markSent('whatsappBtn', '✓ WhatsApp opened!');
   }
